@@ -1,0 +1,290 @@
+/* The launcher's additions to morphe's theme, the base it shares with
+   kenon: the colours, windows, buttons and fields are morphe's; this file
+   only adds the layout pieces the launcher's pages use, drawn with
+   morphe's own colours. */
+
+:root {
+  /* names the pages use, mapped onto morphe's colours */
+  --line: var(--panel-3);
+  --line-strong: var(--outline);
+  --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+  --ok-soft: color-mix(in srgb, var(--ok) 16%, transparent);
+  --bad-soft: color-mix(in srgb, var(--bad) 16%, transparent);
+  --hero-a: var(--panel);
+  --hero-b: var(--panel-2);
+}
+
+.display {
+  font-family: "Marcellus SC", "Segoe UI", serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* A quiet button that still shows its edge: the secondary actions in a
+ * list row (open a folder, copy, remove), so they read as buttons. */
+button.quiet.outlined {
+  border-color: var(--outline);
+}
+
+button.quiet.outlined:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+button.danger:hover:not(:disabled) {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+button.primary.danger {
+  background: linear-gradient(var(--bad), color-mix(in srgb, var(--bad) 75%, black));
+  color: #fff;
+}
+
+/* Text boxes and selects light their edge on hover, as buttons do. */
+input:hover:not(:disabled),
+textarea:hover:not(:disabled),
+select:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+}
+
+.faint {
+  color: var(--faint);
+}
+
+.small {
+  font-size: 0.85em;
+}
+
+/* A page: its title, a line under it, then sections */
+/* The whole interface scales with the window: everything is sized in
+   rem, and the root size runs from 14px (small windows) to 16px. */
+html {
+  font-size: clamp(14px, min(1.6vw, 2.8vh), 16px);
+}
+/* morphe's body text is 14px; here it is 14px at the full size and
+   scales with the rest */
+body {
+  font-size: 0.875rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 52rem;
+  min-height: 0;
+  /* the last resort, when even the lists at their smallest leave too
+     little room: the page scrolls inside its own area, the window never */
+  overflow-y: auto;
+}
+
+/* A page fits the window: its sections keep their height, and a section
+   holding a list gives up height first, the list scrolling inside its
+   panel. */
+.page.settings {
+  max-width: 76rem;
+}
+
+.page > * {
+  flex: none;
+  min-height: 0;
+}
+.page > div:has(.rows, .scroll) {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 9rem;
+}
+.page > div > .window:has(> .scroll) {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.page .rows,
+.page .scroll {
+  min-height: 5rem;
+  overflow-y: auto;
+}
+.page .rows > *,
+.page .scroll > * {
+  flex-shrink: 0;
+}
+
+.page-head h1 {
+  font-size: 1.45rem;
+  margin: 0;
+}
+
+.page-head p {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
+
+/* A section's small capital label, as kenon's sidebar groups */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 0.45rem 0.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* A list of rows in a window */
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.rows > li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-s);
+  min-height: 2.9rem;
+}
+
+.rows > li + li {
+  border-top: 1px solid var(--line);
+}
+
+.rows > li:hover {
+  background: var(--panel-2);
+}
+
+.rows > li.empty {
+  color: var(--muted);
+  justify-content: center;
+}
+
+.rows .main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rows .title {
+  font-weight: 600;
+}
+
+.rows .sub {
+  color: var(--muted);
+  font-size: 0.85em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rows .actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Small labels, morphe's tag with colours */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.05rem 0.45rem;
+  border-radius: 4px;
+  background: var(--panel-3);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.badge.accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.badge.ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.badge.bad {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+
+/* Dialogs: a game window over a dimmed page */
+dialog.modal {
+  color: var(--ink);
+  background: var(--panel);
+  border: 2px solid var(--outline);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 2px var(--rim);
+  padding: 1.25rem;
+  width: min(28rem, calc(100vw - 2rem));
+}
+
+dialog.modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+dialog.modal h2 {
+  margin: 0 0 0.5rem;
+}
+
+dialog.modal .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+/* Forms */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field > span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.field .hint {
+  font-size: 0.8rem;
+  color: var(--faint);
+}
+
+.inline {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}

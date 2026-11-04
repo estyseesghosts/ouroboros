@@ -1,0 +1,8 @@
+run 26: p0prof (native build, sha256 f372d3b2...), NOWAIT, EDGE=0, --profile 300, Mistralton bench spot (same as run 22).
+Steady 61.2 ms/frame wall = 16 game frames/s = 16 swaps/s (0 presents skipped: unpaced counter is honest).
+2D path: GPU (setting on, GL 2D ready). 32 GPU 2D screens/s = both screens every frame.
+Top level (sums to wall): game 9.95, step 3.39, render 39.16, pump 0.67, present 4.03, audio 4.19 = 61.4.
+render 39.16 = g2dread 22.49 + main2d 8.76 + g3d 5.96 (contains ui 5.96 -> nested: g3d timer starts before ui) + boot3d 1.93 + g2dprep 0.01.
+=> The untimed 22 ms of run 22 is g2dread: eidos_platform_gpu2d_pixels, the synchronous readback of each GPU-composed screen (2/frame) for the CPU readers.
+=> main2d 8.76 still runs with GPU 2D on (CPU compose not skipped in the hot path).
+=> ui (boot_ui_frame) 5.96 ms; real 3D work in g3d ~0.

@@ -1,0 +1,50 @@
+# Run 28 checklist — perf-all (switch/perf-all) hardware session
+
+Branch: switch/perf-all (worktree src/wt/pall), tip 6372ae3.
+Merges in order: P2 bridge, P8 host, P3 g2d, P5 g3d, P6 gl3d, P4 ui,
+P1 2d-gate, P7 audio/present/pacer. Merge resolutions: externs drop
+(ui.h already included under EIDOS_BOOT_SDL), AUDIO_CHUNK_FRAMES
+256->546 (latency 2304, cap 8192 kept), glInvalidateFramebuffer hints
+via SDL (NULL-safe no-op on GL 3.3/wasm), g_k scale unchanged.
+
+Artifacts (recorded, not claimed as fps):
+- module: build-macos/module/eidos_boot.wasm, 27734670 bytes,
+  sha256 d5454c3c6e46926dde543c5e134a1c7b42bfb9e6bcefe1ee009491833965699d
+- NRO: /tmp/build-perf/eidos.nro, 61942564 bytes,
+  sha256 2fa261debc016064567f21c9d779df762a20d87e06a11cf23a96aaea5875793a
+- strings: Mesa 16732f6142 present, drm_nouveau refs 0
+- mesa-prefix: ~/.cache/eidos/mesa-switch/16732f61427b795abf37e40d957cb62213caec8a/mesa-install/opt/devkitpro/portlibs/switch
+- desktop: cmake --build green, ctest 101/103 pass (test_audio +
+  test_mod_wasm fail identically at base c707f58 — pre-existing, not
+  from these streams), test_gpu3d passes incl. edge cases
+- module flags note: needs -D_GNU_SOURCE (wasi-sdk 25 hides getentropy
+  otherwise); matches tools/build64.py MODULE_FLAGS
+
+Desktop behavior: unchanged by design (gating is request-driven,
+uploads fall back to re-spec on size change, resample keeps fast path,
+save rename tries replace first). test_ui_pc/test_ui_input carry
+no-op want_screens stubs (they hand recipes pixels directly).
+
+## Before the run
+
+- [ ] Title mode boots to the Mistralton bench spot (same as run 26).
+- [ ] Copy logs/28/env.txt + logs/28/args.txt to the Switch session.
+- [ ] EIDOS_EDGE=0 for the first pair (outlines off until confirmed).
+
+## The pair (no fps claim without it)
+
+- [ ] Bench spot, handheld 1x, outlines off, NOWAIT, --profile 300.
+- [ ] Hold the spot for 120 s or more (steady-state numbers only).
+- [ ] Take scene shots at start and end (field_end framing as run 26).
+- [ ] Capture with nxlink -s and keep STDOUT — stderr alone voids
+      the profile (the profile buckets come from stdout).
+- [ ] Repeat the pair with outlines on (EIDOS_EDGE unset) to check
+      the 3D is correct, not black.
+
+## After the run
+
+- [ ] Save stdout, stderr, shots as logs/28/ (do not edit env/args).
+- [ ] Same-scene before/after pair only: run 26 vs run 28 numbers.
+- [ ] Do not push, do not PR, do not claim fps here.
+
+Ask the human to run. No hardware runs were started in this plan.

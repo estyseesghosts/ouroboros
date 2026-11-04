@@ -1,0 +1,74 @@
+# Build output and local runs: never commit generated binaries or extracted data
+build*/
+build64/
+b32/
+*.o
+*.a
+
+# Switch homebrew outputs (contain compiled game code when built with a ROM)
+*.nro
+*.elf
+*.nso
+*.pfs0
+*.nca
+*.nsp
+*.xci
+
+# Nintendo / Pokemon game data: ROMs, saves, keys, extracts — NEVER commit
+*.nds
+*.3ds
+*.cia
+*.sav
+*.sav.bak*
+*.bin
+*.srl
+*.narc
+*.ncgr
+*.nclr
+*.bmd0
+*.rom
+baserom*
+*.key
+*[Bb][Ii][Oo][Ss]*.bin
+prod.keys
+title.keys
+/extract/
+extract/
+extract_*/
+build/assets/
+
+# Game screenshots and captures from test runs
+*.jpg
+*.jpeg
+# NOTE: eidos/ keeps its own original icons and banner PNGs (tracked upstream
+# in Project-Holon/eidos). Those stay. Run screenshots from logs/ are excluded
+# via logs-text/ holding text only.
+logs-text/**/*.jpg
+logs-text/**/*.png
+logs-text/**/*.jpeg
+
+# Vendor / toolchain downloads
+/vendor/
+/sdk/
+/tools/gcc-arm/
+/tools/gcc-host/
+/tools/cmake/
+/tools/ninja/
+/tools/*.exe
+third_party/
+
+# Python / editor noise
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Local run reports inside the eidos tree (mirrors eidos .gitignore)
+eidos/switch/boot*.txt
+eidos/switch/stderr*.txt
+eidos/switch/env.txt
+eidos/switch/logs/
+eidos/*.log
+eidos/extract/

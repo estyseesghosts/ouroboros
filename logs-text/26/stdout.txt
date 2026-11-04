@@ -1,0 +1,796 @@
+Sending eidos-p0prof.nro, 52931364 bytes
+17286061 sent (32.66%), 1463 blocks
+starting server
+server active ...
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+eidos_boot: arguments
+eidos_boot: firstrun
+eidos_boot: firstrun done
+eidos_boot: DS address space identity-mapped; 159 code pointers the metadata does not list relocated by the scan
+eidos: SDL_Init(0x20)
+eidos: SDL_Init -> 1 ()
+eidos: SDL_CreateWindow(1280 x 720, 0x2022)
+SDL_EGL_ChooseConfig: found a slow EGL config
+eidos: SDL_CreateWindow -> ok ()
+eidos: SDL_GL_CreateContext
+eidos: SDL_GL_CreateContext -> ok (That operation is not supported)
+eidos: OpenGL NV12B (OpenGL ES 3.2 Mesa 26.2.4 (git-16732f6142))
+eidos: GPU 3D features 0x3, integer samples 8
+eidos: presenter OpenGL 3.3 (video driver Switch)
+eidos: SDL_InitSubSystem(0x2000)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: SDL_InitSubSystem(0x10)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: 2D path: GPU (EIDOS_G2D_GPU unset, GPU 2D setting on, GL 2D ready yes)
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: 31 fps
+eidos: 31 game frames/s, 0 presents skipped/s, 44 GPU 2D screens/s
+eidos: 50 fps
+eidos: 50 game frames/s, 0 presents skipped/s, 101 GPU 2D screens/s
+eidos: 49 fps
+eidos: 48 game frames/s, 0 presents skipped/s, 97 GPU 2D screens/s
+eidos: 36 fps
+eidos: 36 game frames/s, 0 presents skipped/s, 73 GPU 2D screens/s
+eidos: 34 fps
+eidos: 34 game frames/s, 0 presents skipped/s, 69 GPU 2D screens/s
+eidos: 51 fps
+eidos: 51 game frames/s, 0 presents skipped/s, 102 GPU 2D screens/s
+prof frame 300 (300 frames, 23.13 ms/frame wall): step 0.35/3.78 g3d 7.45/14.92 main2d 5.92/6.20 sub2d 0.00/0.00 present 3.70/24.46 audio 0.73/2.34 wait 0.00/0.00 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 16.00/49.79 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 game 1.86/191.33 pre 0.65/193.63 pump 0.66/1.69 mod 0.01/0.02 audopen 0.00/0.00 ui 7.44/14.92 g2dprep 0.14/39.50 capture 0.00/0.00 g2dread 2.48/3.26 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 48 fps
+eidos: 47 game frames/s, 0 presents skipped/s, 95 GPU 2D screens/s
+eidos: 36 fps
+eidos: 36 game frames/s, 0 presents skipped/s, 73 GPU 2D screens/s
+eidos: 3D features the GPU cannot draw: 0x0
+eidos: 19 fps
+eidos: 19 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 10 fps
+eidos: 10 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 11 fps
+eidos: 11 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 11 fps
+eidos: 11 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 11 fps
+eidos: 11 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 11 fps
+eidos: 11 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 10 fps
+eidos: 10 game frames/s, 0 presents skipped/s, 0 GPU 2D screens/s
+eidos: 8 fps
+eidos: 8 game frames/s, 0 presents skipped/s, 3 GPU 2D screens/s
+eidos: 12 fps
+eidos: 12 game frames/s, 0 presents skipped/s, 25 GPU 2D screens/s
+eidos: 14 fps
+eidos: 13 game frames/s, 0 presents skipped/s, 27 GPU 2D screens/s
+eidos: 14 fps
+eidos: 14 game frames/s, 0 presents skipped/s, 28 GPU 2D screens/s
+eidos: 18 fps
+eidos: 18 game frames/s, 0 presents skipped/s, 37 GPU 2D screens/s
+eidos: 15 fps
+eidos: 15 game frames/s, 0 presents skipped/s, 31 GPU 2D screens/s
+eidos: 4 fps
+eidos: 4 game frames/s, 0 presents skipped/s, 9 GPU 2D screens/s
+ds call: 0x0216E471 -> overlay code
+eidos: 5 fps
+eidos: 5 game frames/s, 0 presents skipped/s, 11 GPU 2D screens/s
+ds call: 0x021F36C1 -> overlay code
+bw_ds_ptr: VRAM 0x06898000 has no bank mapped; accesses there go nowhere, as on the DS
+ds call: 0x0216E469 -> overlay code
+ds call: 0x021F37D5 -> overlay code
+eidos: 15 fps
+eidos: 15 game frames/s, 0 presents skipped/s, 31 GPU 2D screens/s
+eidos: 23 fps
+eidos: 23 game frames/s, 0 presents skipped/s, 46 GPU 2D screens/s
+eidos: 27 fps
+eidos: 27 game frames/s, 0 presents skipped/s, 54 GPU 2D screens/s
+prof frame 600 (300 frames, 65.93 ms/frame wall): step 3.04/45.56 g3d 23.44/103.92 main2d 11.68/23.28 sub2d 0.00/0.00 present 3.55/6.55 audio 2.75/5.55 wait 0.00/0.00 geom 9.05/45.22 raster 0.06/19.39 snap 1.30/21.71 texdec 0.57/2.52 gldraw 0.81/3.90 glup 0.02/4.16 render 37.69/115.92 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.29/1.16 game 18.31/745.53 pre 0.00/0.02 pump 0.66/0.78 mod 0.01/0.01 audopen 0.00/0.00 ui 21.69/103.91 g2dprep 0.01/0.01 capture 0.55/2.16 g2dread 1.98/3.36 read3d 1.75/19.73 bcap 0.00/0.00 (avg/max ms)
+eidos: 27 fps
+eidos: 27 game frames/s, 0 presents skipped/s, 54 GPU 2D screens/s
+eidos: 27 fps
+eidos: 27 game frames/s, 0 presents skipped/s, 54 GPU 2D screens/s
+eidos: 27 fps
+eidos: 27 game frames/s, 0 presents skipped/s, 54 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 900 (300 frames, 54.55 ms/frame wall): step 3.39/6.62 g3d 5.69/16.47 main2d 8.74/8.96 sub2d 0.00/0.00 present 3.93/6.20 audio 3.65/5.11 wait 0.00/0.00 geom 8.18/6.28 raster 0.00/0.00 snap 0.94/2.06 texdec 0.37/0.14 gldraw 0.85/13.92 glup 0.02/4.61 render 32.75/63.18 boot3d 1.45/26.13 glread 0.00/0.00 unprem 0.00/0.00 game 10.23/96.99 pre 0.00/0.01 pump 0.66/0.80 mod 0.01/0.03 audopen 0.00/0.00 ui 5.69/16.47 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 16.83/23.53 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 1200 (300 frames, 61.27 ms/frame wall): step 3.39/6.63 g3d 5.96/6.58 main2d 8.76/8.95 sub2d 0.00/0.00 present 4.05/5.55 audio 4.19/5.22 wait 0.00/0.00 geom 8.18/6.29 raster 0.00/0.00 snap 0.94/2.08 texdec 0.37/0.16 gldraw 1.14/1.34 glup 0.00/0.00 render 39.17/40.08 boot3d 1.93/2.14 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.19 pre 0.01/0.01 pump 0.67/0.78 mod 0.01/0.01 audopen 0.00/0.00 ui 5.96/6.58 g2dprep 0.01/0.01 capture 0.00/0.00 g2dread 22.49/23.43 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 1500 (300 frames, 61.25 ms/frame wall): step 3.39/6.55 g3d 5.96/6.57 main2d 8.76/8.96 sub2d 0.00/0.00 present 4.03/5.18 audio 4.17/5.33 wait 0.00/0.00 geom 8.18/6.21 raster 0.00/0.00 snap 0.94/1.98 texdec 0.37/0.11 gldraw 1.13/1.32 glup 0.00/0.00 render 39.17/40.10 boot3d 1.93/2.15 glread 0.00/0.00 unprem 0.00/0.00 game 9.97/16.20 pre 0.01/0.01 pump 0.67/0.73 mod 0.01/0.01 audopen 0.00/0.00 ui 5.96/6.57 g2dprep 0.01/0.04 capture 0.00/0.00 g2dread 22.49/23.40 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 1800 (300 frames, 61.26 ms/frame wall): step 3.38/6.55 g3d 5.96/6.62 main2d 8.76/8.94 sub2d 0.00/0.00 present 4.04/7.17 audio 4.17/5.23 wait 0.00/0.00 geom 8.18/6.21 raster 0.00/0.00 snap 0.93/1.92 texdec 0.37/0.11 gldraw 1.13/1.32 glup 0.00/0.01 render 39.17/40.77 boot3d 1.92/2.14 glread 0.00/0.00 unprem 0.00/0.00 game 9.97/16.14 pre 0.01/0.02 pump 0.66/0.73 mod 0.01/0.03 audopen 0.00/0.00 ui 5.96/6.62 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/24.03 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 2100 (300 frames, 61.27 ms/frame wall): step 3.39/6.63 g3d 5.97/6.59 main2d 8.75/8.95 sub2d 0.00/0.00 present 4.04/7.49 audio 4.20/5.21 wait 0.00/0.00 geom 8.18/6.29 raster 0.00/0.00 snap 0.94/2.07 texdec 0.37/0.15 gldraw 1.14/1.30 glup 0.00/0.00 render 39.16/40.49 boot3d 1.92/2.12 glread 0.00/0.00 unprem 0.00/0.00 game 9.97/16.21 pre 0.01/0.01 pump 0.66/0.74 mod 0.01/0.02 audopen 0.00/0.00 ui 5.96/6.58 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.49/23.50 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 2400 (300 frames, 61.23 ms/frame wall): step 3.39/6.57 g3d 5.97/6.60 main2d 8.76/8.96 sub2d 0.00/0.00 present 4.03/4.98 audio 4.15/5.22 wait 0.00/0.00 geom 8.18/6.23 raster 0.00/0.00 snap 0.94/2.02 texdec 0.37/0.16 gldraw 1.13/1.34 glup 0.00/0.00 render 39.18/40.93 boot3d 1.93/2.13 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.15 pre 0.01/0.01 pump 0.66/0.77 mod 0.01/0.01 audopen 0.00/0.00 ui 5.97/6.59 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.49/23.94 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 2700 (300 frames, 61.31 ms/frame wall): step 3.39/6.59 g3d 5.96/6.58 main2d 8.76/8.96 sub2d 0.00/0.00 present 4.03/5.64 audio 4.24/5.22 wait 0.00/0.00 geom 8.18/6.25 raster 0.00/0.00 snap 0.94/2.04 texdec 0.37/0.15 gldraw 1.14/1.32 glup 0.00/0.00 render 39.17/40.26 boot3d 1.93/2.14 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.17 pre 0.01/0.01 pump 0.66/0.72 mod 0.01/0.03 audopen 0.00/0.00 ui 5.96/6.57 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/23.42 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 3000 (300 frames, 61.19 ms/frame wall): step 3.39/6.58 g3d 5.97/6.56 main2d 8.76/8.97 sub2d 0.00/0.00 present 4.03/5.87 audio 4.11/5.07 wait 0.00/0.00 geom 8.18/6.24 raster 0.00/0.00 snap 0.94/2.02 texdec 0.37/0.16 gldraw 1.13/1.33 glup 0.00/0.01 render 39.18/40.18 boot3d 1.93/2.17 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.13 pre 0.01/0.01 pump 0.66/0.73 mod 0.01/0.01 audopen 0.00/0.00 ui 5.97/6.54 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/23.41 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+prof frame 3300 (300 frames, 61.32 ms/frame wall): step 3.39/6.55 g3d 5.98/6.59 main2d 8.76/8.97 sub2d 0.00/0.00 present 4.03/5.42 audio 4.23/5.24 wait 0.00/0.00 geom 8.17/6.21 raster 0.00/0.00 snap 0.93/1.98 texdec 0.37/0.12 gldraw 1.13/1.30 glup 0.00/0.00 render 39.19/40.76 boot3d 1.92/2.22 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.13 pre 0.01/0.01 pump 0.66/0.78 mod 0.01/0.03 audopen 0.00/0.00 ui 5.97/6.59 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/24.08 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 3600 (300 frames, 61.21 ms/frame wall): step 3.39/6.53 g3d 5.96/6.57 main2d 8.75/8.94 sub2d 0.00/0.00 present 4.03/5.85 audio 4.14/5.11 wait 0.00/0.00 geom 8.17/6.19 raster 0.00/0.00 snap 0.93/1.98 texdec 0.37/0.16 gldraw 1.13/1.28 glup 0.00/0.00 render 39.16/40.08 boot3d 1.93/2.19 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.16 pre 0.01/0.02 pump 0.67/0.82 mod 0.01/0.03 audopen 0.00/0.00 ui 5.96/6.57 g2dprep 0.01/0.02 capture 0.00/0.00 g2dread 22.50/23.45 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 3900 (300 frames, 61.23 ms/frame wall): step 3.38/6.61 g3d 5.97/6.61 main2d 8.75/8.97 sub2d 0.00/0.00 present 4.04/5.94 audio 4.16/5.18 wait 0.00/0.00 geom 8.17/6.27 raster 0.00/0.00 snap 0.93/2.05 texdec 0.37/0.13 gldraw 1.13/1.28 glup 0.00/0.01 render 39.17/40.82 boot3d 1.92/2.13 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.17 pre 0.01/0.01 pump 0.67/0.73 mod 0.01/0.01 audopen 0.00/0.00 ui 5.97/6.60 g2dprep 0.01/0.01 capture 0.00/0.00 g2dread 22.49/24.15 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 4200 (300 frames, 61.22 ms/frame wall): step 3.38/6.57 g3d 5.95/6.54 main2d 8.75/8.94 sub2d 0.00/0.00 present 4.03/5.95 audio 4.17/5.21 wait 0.00/0.00 geom 8.17/6.23 raster 0.00/0.00 snap 0.93/1.98 texdec 0.37/0.12 gldraw 1.13/1.30 glup 0.00/0.01 render 39.16/40.09 boot3d 1.93/2.13 glread 0.00/0.00 unprem 0.00/0.00 game 9.95/16.14 pre 0.01/0.01 pump 0.66/0.72 mod 0.01/0.01 audopen 0.00/0.00 ui 5.95/6.54 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/23.39 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 4500 (300 frames, 61.20 ms/frame wall): step 3.39/6.60 g3d 5.96/6.60 main2d 8.75/8.95 sub2d 0.00/0.00 present 4.02/5.78 audio 4.17/5.17 wait 0.00/0.00 geom 8.17/6.26 raster 0.00/0.00 snap 0.94/2.05 texdec 0.37/0.10 gldraw 1.13/1.29 glup 0.00/0.01 render 39.16/40.00 boot3d 1.93/2.25 glread 0.00/0.00 unprem 0.00/0.00 game 9.95/16.12 pre 0.01/0.02 pump 0.66/0.76 mod 0.01/0.02 audopen 0.00/0.00 ui 5.96/6.59 g2dprep 0.01/0.04 capture 0.00/0.00 g2dread 22.49/23.42 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 4800 (300 frames, 61.24 ms/frame wall): step 3.39/6.54 g3d 5.96/6.59 main2d 8.76/8.94 sub2d 0.00/0.00 present 4.03/5.20 audio 4.19/5.18 wait 0.00/0.00 geom 8.17/6.20 raster 0.00/0.00 snap 0.93/1.98 texdec 0.37/0.15 gldraw 1.13/1.29 glup 0.00/0.01 render 39.16/40.47 boot3d 1.93/2.12 glread 0.00/0.00 unprem 0.00/0.00 game 9.95/16.17 pre 0.01/0.01 pump 0.67/0.78 mod 0.01/0.03 audopen 0.00/0.00 ui 5.96/6.58 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.49/23.42 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 5100 (300 frames, 61.22 ms/frame wall): step 3.39/6.58 g3d 5.96/6.57 main2d 8.76/8.97 sub2d 0.00/0.00 present 4.03/5.44 audio 4.16/5.22 wait 0.00/0.00 geom 8.17/6.24 raster 0.00/0.00 snap 0.93/2.00 texdec 0.37/0.11 gldraw 1.13/1.32 glup 0.00/0.01 render 39.17/40.16 boot3d 1.92/2.21 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.25 pre 0.01/0.01 pump 0.67/0.73 mod 0.01/0.01 audopen 0.00/0.00 ui 5.95/6.56 g2dprep 0.01/0.03 capture 0.00/0.00 g2dread 22.50/23.47 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 5400 (300 frames, 61.31 ms/frame wall): step 3.38/6.52 g3d 5.97/6.70 main2d 8.75/9.01 sub2d 0.00/0.00 present 4.04/5.53 audio 4.23/5.17 wait 0.00/0.00 geom 8.17/6.19 raster 0.00/0.00 snap 0.93/1.97 texdec 0.37/0.14 gldraw 1.13/1.36 glup 0.00/0.00 render 39.19/40.53 boot3d 1.92/2.14 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.14 pre 0.01/0.01 pump 0.66/0.80 mod 0.01/0.03 audopen 0.00/0.00 ui 5.97/6.70 g2dprep 0.01/0.01 capture 0.00/0.00 g2dread 22.51/23.49 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 5700 (300 frames, 61.16 ms/frame wall): step 3.39/6.53 g3d 5.95/6.64 main2d 8.76/8.94 sub2d 0.00/0.00 present 4.03/4.94 audio 4.11/5.11 wait 0.00/0.00 geom 8.18/6.19 raster 0.00/0.00 snap 0.93/1.97 texdec 0.37/0.11 gldraw 1.13/1.28 glup 0.00/0.00 render 39.15/40.16 boot3d 1.92/2.10 glread 0.00/0.00 unprem 0.00/0.00 game 9.97/16.16 pre 0.00/0.01 pump 0.67/0.75 mod 0.01/0.03 audopen 0.00/0.00 ui 5.95/6.64 g2dprep 0.01/0.01 capture 0.00/0.00 g2dread 22.49/23.51 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 6000 (300 frames, 61.24 ms/frame wall): step 3.38/6.53 g3d 5.95/6.59 main2d 8.76/8.94 sub2d 0.00/0.00 present 4.03/5.87 audio 4.20/5.24 wait 0.00/0.00 geom 8.17/6.19 raster 0.00/0.00 snap 0.93/1.94 texdec 0.37/0.13 gldraw 1.13/1.30 glup 0.00/0.00 render 39.16/40.10 boot3d 1.92/2.18 glread 0.00/0.00 unprem 0.00/0.00 game 9.95/16.16 pre 0.01/0.01 pump 0.66/0.73 mod 0.01/0.02 audopen 0.00/0.00 ui 5.95/6.58 g2dprep 0.01/0.02 capture 0.00/0.00 g2dread 22.50/23.42 read3d 0.00/0.00 bcap 0.00/0.01 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 33 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 1recv: Connection reset by peer
+6 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+prof frame 6300 (300 frames, 61.25 ms/frame wall): step 3.38/6.54 g3d 5.96/6.66 main2d 8.76/8.95 sub2d 0.00/0.00 present 4.04/5.69 audio 4.17/5.20 wait 0.00/0.00 geom 8.18/6.20 raster 0.00/0.00 snap 0.93/1.95 texdec 0.37/0.12 gldraw 1.14/1.32 glup 0.00/0.00 render 39.18/40.20 boot3d 1.93/2.12 glread 0.00/0.00 unprem 0.00/0.00 game 9.96/16.20 pre 0.01/0.01 pump 0.67/0.78 mod 0.01/0.03 audopen 0.00/0.00 ui 5.95/6.65 g2dprep 0.01/0.01 capture 0.00/0.00 g2dread 22.51/23.41 read3d 0.00/0.00 bcap 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+eidos: 16 fps
+eidos: 16 game frames/s, 0 presents skipped/s, 32 GPU 2D screens/s
+exiting ... 

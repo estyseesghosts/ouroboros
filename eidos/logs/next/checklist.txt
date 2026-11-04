@@ -1,0 +1,49 @@
+# Next-run checklist — switch/fix-g5 (gym walk, S5 metrics)
+
+Branch: switch/fix-g5 (worktree src/wt/g5metrics, base a7acd55).
+Driver: tools-local/session.sh NN <prep|start|shot|temp|collect|want3|validate|close>.
+Run dir: logs/NN/ with env.txt + args.txt + scene.txt (one line, e.g. field).
+
+Build identity (implementer fills at the one test build; stop and ask human):
+- module bytes + sha256: ________________________________
+- NRO path/bytes/sha256: ________________________________ (delta vs base:
+  _________; over 1MB needs `readelf -S`)
+- strings: Mesa 16732f6 present (x2), drm_nouveau refs 0
+- -O2 proof: o0_count=0 (grep -q -O0 && exit 1 at build)
+- desktop: cmake --build green, ctest matches base exactly
+  (known fails test_audio + test_mod_wasm identical signatures).
+
+Golden legend (frozen; engine/frame/prof.h is the source of truth):
+- RENDER contains G3D/UI, BOOT3D contains gldraw/glup,
+  PRESENT is compose+render+swap, never summed. Nested buckets never sum.
+- Kept buckets: wall step g3d main2d present audio geom g2dread read3d +
+  preup predraw preswap prefin + unacc tail.
+- Census: paint_n upbytes_canvas/screen upcalls want aqueue upskip swapgap
+  pbos skip_n gxcmds/verts/polys pboq ngtex texup/texrespec read_async +
+  ui_redraw/ui_skip pool_hi. Window fields: fps scene memfree.
+- Autopsy: wall>500ms prints phase + top-3 buckets, one line per window max.
+- skip_n counts lag-skipped presents only (game steps are never skipped).
+- ui_redraw/ui_skip follows the canvas generation (pre-S1 builds always
+  redraw; the S1 static gate shows up as ui_skip). pool_hi is snapshot-pool
+  entries high-water (GPU-3D path only). memfree is free bytes (-1 unknown).
+
+Run book (ask the human to run; claim nothing here):
+- Gym walk, wall>=120s, handheld 1x, moving allowed, parked NOT required.
+- Stay in the scene.txt scene every cited window; loader/menu/black voids.
+- want=3 diagnostic FIRST (present must fall, g2dread stays 0 — else STOP).
+- Outlines-on repeat (EDGE=0 first, then --edge-on).
+- SoC temp start/end, shots gym_start/gym_end, nxlink -s stdout mandatory.
+- Validator must print PASS or the run is void and nothing may be cited.
+
+env.txt (one KEY=VALUE per line):
+  EIDOS_NXLINK=1 (mandatory) + EIDOS_FPS_LOG=1 + EIDOS_RENDERER_REPORT=1 +
+  EIDOS_GPU3D_REPORT=1 + EIDOS_RENDERER=gl + EIDOS_EDGE=0 (first phase only).
+args.txt (two lines): --profile / 300.
+build-info.txt (shell-quoted values, sourced by the validator):
+  nro_bytes=.. nro_sha=".." nro_path=".." o0_count=0
+  wasm_bytes=.. wasm_cap=18874368 mesa=".. 16732f6 .." drm_nouveau=0
+
+Old-run note: the pre-S5 capture (7 prof windows, scenes boot/fallback/
+title/title_menu/field, no scene tags) gives FORMAT PASS but SCENE VOID +
+STEADY VOID — non-comparable, never citable. Any window outside the target
+scene voids the run the same way.

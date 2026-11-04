@@ -1,0 +1,35 @@
+# configure directories: build, build32, build-msvc32, b32 (docs/boot-handoff.md)
+build*/
+b32/
+
+# fetched by tools/fetch_sdl.py, not source of truth
+third_party/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# a run's leftovers: sdk/plat_crash.c writes eidos_crash.log next to the
+# working directory and a redirected build leaves build*.log, so every log a
+# run drops in the tree is ignored; eidos_extract writes extract/ when it is
+# asked for an output here
+*.log
+extract/
+.DS_Store
+
+# Android (android/build.py) and iOS (ios/build.py) builds
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+build-android/
+build-ios/
+
+# Switch (switch/build.py): the program, symbols and run reports are outputs
+switch/eidos.nro
+switch/eidos-bounds.nro
+switch/eidos.elf
+switch/boot*.txt
+switch/stderr*.txt
+switch/env.txt
+switch/logs/

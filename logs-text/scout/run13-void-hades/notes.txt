@@ -1,0 +1,2 @@
+app pid 
+PID 144 terminated (rc=0x00000000)

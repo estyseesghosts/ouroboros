@@ -1,0 +1,24 @@
+host: stderr ok
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+eidos_boot: arguments
+eidos_boot: firstrun
+eidos_boot: firstrun done
+eidos: SDL_Init(0x20)
+eidos: SDL_Init -> 1 ()
+eidos: SDL_CreateWindow(1280 x 720, 0x2022)
+eidos: SDL_CreateWindow -> null (Could not initialize EGL)
+eidos: SDL_GL_LoadLibrary: Could not initialize EGL
+eidos: SDL_CreateWindow(1280 x 720, 0x2020)
+eidos: SDL_CreateWindow -> null (EGL not initialized)
+eidos: presenter SDL renderer (video driver Switch)
+eidos: SDL_CreateWindow failed: EGL not initialized
+eidos_boot: no window; running headless
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory

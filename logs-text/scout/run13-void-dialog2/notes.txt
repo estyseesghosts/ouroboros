@@ -1,0 +1,2 @@
+app: 146 0x05446530ACA7E000
+PID 146 terminated (rc=0x00000000)

@@ -1,0 +1,13 @@
+host: stderr ok
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+usage: eidos_boot [--data-root PATH] [--frames N] [--window] [--watchdog SECONDS] [--screenshot N[,N...]] [--screenshot-dir DIR] [--g3d-trace N] [--keep-going] [--press BUTTONS@FRAME[:HOLD]] [--input SCRIPT] [--fullscreen|--borderless|--windowed] [--resolution N|auto] [--pixel-scale N|auto] [--layout vertical|horizontal|one] [--two-screens] [--swap-screens] [--gap N] [--volume N] [--mod FOLDER] [--mod-log FILE]
+  --data-root PATH   the game data (an extraction folder, or its data
+                     folder); default: the saved one, else the
+                     platform's (see docs/installer.md)
+  --rom PATH         make the game data from this ROM, no window
+  --no-window        never open the setup window; say what is missing
+  --reset-data       delete the game data eidos made, then exit
+  --move-data PATH   move the game data to PATH, then exit

@@ -1,0 +1,18 @@
+# Run 38 checklist — fix-round5 (switch/fix-round5) parked watch
+
+Branch: switch/fix-round5 (worktree src/wt/r5all). Merges: S1
+geometry (verified no-cut + consumer map — game reads GX state),
+S2 stuck-tail (gtex shrink on serial change, capture readback async
+via PBO ring), S3 audio (stream opened at native device rate).
+
+- module 14484591 bytes, sha256 617f2055ce6c32a9a3c69695aaacfddaa5ef0d07f9c01e3a2473793c115f60d9
+- NRO /tmp/build-fix5r/eidos.nro, 52009764 bytes,
+  sha256 4dc773672f81320dc575413fb854a37d34b2d84ee88682d09357c7bd7f494880
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+  test_gpu3d passes.
+
+Watch: in-game wall vs run 36/37 (S2/S3 should trim present hitches
++ audio convert; geom unchanged per S1 map — expect game bucket flat).
+Hitch autopsy lines (in base) catch any 500ms+ stall with phase+top3.
+Parked, no inputs first, then in-game driving if stable. No fps claim
+without the same-scene pair (want=3 vs gated, bench 120s+).

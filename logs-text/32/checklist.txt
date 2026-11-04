@@ -1,0 +1,13 @@
+# Run 32 — parked flap watch (instr-run + scene-log throttle)
+
+Build: switch/instr-run tip 57a4e2a (scene log max 1/sec).
+- module 14483600 bytes, sha256 861ad04668ab238ffd5c1f47b1f0e83ef271164b3315c561b68cad91468e18c6
+- NRO /tmp/build-instr2/eidos.nro, 52009764 bytes,
+  sha256 55a897ecd94fcaf4bdec01d37feb631cb6bcd2eb42b04255f79a84e725445296
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+
+Plan: boot, touch nothing (title = parked). Run 5+ min to get
+several --profile 300 windows. Watch: does the want-mask flap with
+the scene, and do pboq/pbos + upbytes move with it? If the flip-flop
+lines up with upload/readback churn, the decider loop is the
+slowdown, not the drawing.

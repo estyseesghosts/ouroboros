@@ -1,0 +1,3 @@
+Sending eidos.nro, 52869924 bytes
+send: Broken pipe
+Failed sending chunk size

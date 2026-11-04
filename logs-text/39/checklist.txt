@@ -1,0 +1,37 @@
+# Run 39 — decisive instrumentation (switch/instr2 @e3cb8fd)
+
+Build: switch/instr2, one commit on fix-round5. Pure instrumentation,
+zero behavior change (timers + counters only; sampled prefin is the
+only sync, every 120th frame). Desktop green (2 known fails).
+
+- module 14487000 bytes, sha256 338ff2e7c2d442a05e9a3d5996a7c60f174e83bf5c1c9a57f52ebbd21271110a
+- NRO /tmp/build-instr5/eidos.nro, 52013860 bytes,
+  sha256 70174d5b9a297d335fb7ed3f72553f8225302fcec1b3544aa0161a69dfad4936
+- strings: Mesa 16732f6142, drm_nouveau 0.
+
+What each new number decides (read one parked + one in-game window):
+- prefin vs preswap (sampled): prefin ~= preswap => GPU drain backlog
+  (fix = fewer bytes/submits); prefin ~= 0 + preswap big => swap path
+  itself (fix = present scheduling, not content).
+- swapgap: ~0 with big preswap => GPU saturated, CPU feeds fine;
+  large => CPU starves the GPU (fix on CPU side).
+- upbytes_screen/canvas/panel/texup: which upload dominates each
+  scene (fix targets the biggest, not all).
+- read_async vs read_sync: whether the sync readback still fires
+  (S2's async cover verified or hole found — fix = close the hole).
+- want + pboq/pbos: whether gating holds in-game (fix = the flap).
+- paint_n vs skip_n: whether the redraw gate engages per scene.
+- gxcmds + gxverts/gxpolys: geometry cost = count x per-unit.
+  Big count => game-driven (can't cut). Big per-unit => optimize
+  the transform loop (safe, test-covered).
+- ngtex high-water across windows: grows without bound => the stuck
+  tail's accumulator (fix = cap/free). Flat => tail is not growth.
+- wall max + unacc: hitches quantified; unacc>1ms sustained =>
+  unprobed cost exists (instrument it next, don't guess).
+- scene log (1/sec max): which scene each window is, flap or not.
+- hitch autopsy: phase + top-3 buckets + census on any 500ms+ frame.
+
+Procedure: parked title 5+ min (several 300-frame windows), then
+drive/walk in-game if stable. No inputs needed for part one. stdout
+via nxlink -s is the whole dataset. No fps claim; this run exists
+to direct the fix, not to set records.

@@ -1,0 +1,5 @@
+Run 9 (A5b batch #1), EIDOS_EDGE=7. Launch + navigation by maintainer.
+scene_t0 11:09:00, scene_t120 11:11:00.
+Agent read: HUD present (max 255), field BLACK below HUD (pixel max 0) at t0 and t120. Awaiting maintainer verdict.
+Ended by maintainer closing the game.
+Collected. Field fps mode:   77 13   71 14 

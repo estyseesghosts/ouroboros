@@ -1,0 +1,235 @@
+host: stderr ok
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+eidos_boot: arguments
+eidos_boot: firstrun
+eidos_boot: firstrun done
+eidos: SDL_Init(0x20)
+eidos: SDL_Init -> 1 ()
+eidos: SDL_CreateWindow(1280 x 720, 0x2022)
+nouveau/horizon: GM20B device ready: page=0x10000 bind=0x10000 VA=[0x400000000,0x1fffff0000) total-order=on timing=on UMA=3189 MiB available=2085 MiB bo-cache=128 MiB
+nouveau/horizon: channel 1 credits: submissions=128/256 entries=0/0 command-bytes=0/0 pressure-slice=5000 us mapped-3d=0
+nouveau/switch: pushbuf batching=1 batch_fence=1 batch_limit=128 fast_refs=1 incremental_refs=1 command_cache=uncached completion=gpu-default credits=sub:128/256 entry:0/0 byte:0/0 resource_wait_us=5000 perf=0 fence_watchdog_us=0 (disabled) log_interval=120
+nouveau/switch: GART slabs cache policy=cpu-uncached/gpu-cached (NOUVEAU_SWITCH_GART_CPU_UNCACHED=1)
+nouveau/switch: query arena enabled (cpu/gpu-uncached, 128-byte slots)
+nouveau/switch: command BO switch (count=1 ring_index=0 ring_size=4 pending=0 entries=0)
+nouveau/switch: pushbuf periodic logical=1 native=1 entries=1/1 merged=0 dwords=1158 completion=0/1 upgrades=0 kick_fail=0 retries=0 throttle=0/1 fences=0 waits=0 acquire_groups=0 full_barriers=0 bo_switches=1
+nouveau/switch: credits periodic current=1/4/4688 peak=1/4/4688 retired=0 proactive=0/0 waits=0(0/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+SDL_EGL_ChooseConfig: found a slow EGL config
+eidos: SDL_CreateWindow -> ok ()
+eidos: SDL_GL_CreateContext
+eidos: SDL_GL_CreateContext -> ok (That operation is not supported)
+eidos: OpenGL NV12B (OpenGL ES 3.2 Mesa 26.2.4 (git-16732f6142))
+eidos: GPU 3D features 0x3, integer samples 8
+eidos: presenter OpenGL 3.3 (video driver Switch)
+eidos: SDL_InitSubSystem(0x2000)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: SDL_InitSubSystem(0x10)
+eidos: SDL_InitSubSystem -> 1 ()
+nouveau/switch: queued GM20B full barrier (count=1 pending_submits=1)
+nouveau/switch: queued GM20B full barrier (count=2 pending_submits=2)
+nouveau/switch: queued GM20B full barrier (count=3 pending_submits=3)
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/horizon: channel 2 credits: submissions=128/256 entries=0/0 command-bytes=0/0 pressure-slice=5000 us mapped-3d=0
+nouveau/switch: queued GM20B full barrier (count=4 pending_submits=1)
+nouveau/switch: queued GM20B full barrier (count=5 pending_submits=1)
+nouveau/switch: pushbuf periodic logical=249 native=120 entries=94/249 merged=155 dwords=61964 completion=67/53 upgrades=1 kick_fail=0 retries=0 throttle=0/94 fences=84 waits=1 acquire_groups=23 full_barriers=5 bo_switches=1
+nouveau/switch: credits periodic current=94/431/253284 peak=94/431/253284 retired=0 proactive=0/0 waits=0(0/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 44 fps
+nouveau/switch: pushbuf periodic logical=511 native=240 entries=191/511 merged=320 dwords=130212 completion=141/99 upgrades=1 kick_fail=0 retries=0 throttle=0/191 fences=181 waits=1 acquire_groups=46 full_barriers=5 bo_switches=1
+nouveau/switch: credits periodic current=191/866/531680 peak=191/866/531680 retired=0 proactive=0/0 waits=0(0/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: command BO switch (count=2 ring_index=1 ring_size=4 pending=1 entries=1)
+nouveau/horizon: channel 1 credit throttle: current={sub=256 entries=1159 bytes=716596} incoming={entries=4 bytes=1780} watermarks={sub=128/256 entries=0/0 bytes=0/0}
+nouveau/switch: pushbuf periodic logical=772 native=360 entries=288/772 merged=484 dwords=196362 completion=213/147 upgrades=1 kick_fail=0 retries=0 throttle=1/256 fences=277 waits=1 acquire_groups=70 full_barriers=5 bo_switches=2
+nouveau/switch: credits periodic current=158/710/446712 peak=256/1159/716596 retired=129 proactive=1/129 waits=1(1/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: command BO switch (count=3 ring_index=2 ring_size=4 pending=0 entries=0)
+nouveau/switch: pushbuf periodic logical=1034 native=480 entries=386/1035 merged=649 dwords=264610 completion=287/193 upgrades=1 kick_fail=0 retries=0 throttle=1/256 fences=374 waits=1 acquire_groups=93 full_barriers=5 bo_switches=3
+nouveau/switch: credits periodic current=255/1146/725108 peak=256/1159/725108 retired=129 proactive=1/129 waits=1(1/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 59 fps
+nouveau/switch: pushbuf periodic logical=1295 native=600 entries=482/1296 merged=814 dwords=331581 completion=359/241 upgrades=1 kick_fail=0 retries=0 throttle=2/256 fences=470 waits=1 acquire_groups=117 full_barriers=5 bo_switches=3
+nouveau/switch: credits periodic current=222/998/633344 peak=256/1159/726688 retired=258 proactive=2/258 waits=2(2/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/horizon: channel 2 credit throttle: current={sub=256 entries=641 bytes=9740} incoming={entries=3 bytes=44} watermarks={sub=128/256 entries=0/0 bytes=0/0}
+nouveau/switch: command BO switch (count=4 ring_index=3 ring_size=4 pending=3 entries=1)
+nouveau/switch: pushbuf periodic logical=1557 native=720 entries=580/1558 merged=978 dwords=399008 completion=433/287 upgrades=1 kick_fail=0 retries=0 throttle=3/256 fences=567 waits=1 acquire_groups=140 full_barriers=5 bo_switches=4
+nouveau/switch: credits periodic current=190/853/538480 peak=256/1159/731628 retired=387 proactive=3/387 waits=3(3/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 59 fps
+nouveau/switch: pushbuf periodic logical=1818 native=840 entries=676/1819 merged=1143 dwords=465979 completion=505/335 upgrades=1 kick_fail=0 retries=0 throttle=4/256 fences=663 waits=1 acquire_groups=164 full_barriers=5 bo_switches=4
+nouveau/switch: credits periodic current=157/706/446716 peak=256/1159/731628 retired=516 proactive=4/516 waits=4(4/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: command BO switch (count=5 ring_index=0 ring_size=4 pending=2 entries=1)
+nouveau/switch: pushbuf periodic logical=2080 native=960 entries=774/2081 merged=1307 dwords=533511 completion=579/381 upgrades=1 kick_fail=0 retries=0 throttle=4/256 fences=761 waits=1 acquire_groups=187 full_barriers=5 bo_switches=5
+nouveau/switch: credits periodic current=254/1141/722236 peak=256/1159/731628 retired=516 proactive=4/516 waits=4(4/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=2341 native=1080 entries=870/2342 merged=1472 dwords=600502 completion=651/429 upgrades=1 kick_fail=0 retries=0 throttle=5/256 fences=857 waits=1 acquire_groups=211 full_barriers=5 bo_switches=5
+nouveau/switch: credits periodic current=221/993/630480 peak=256/1159/731628 retired=645 proactive=5/645 waits=5(5/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 56 fps
+nouveau/switch: command BO switch (count=6 ring_index=1 ring_size=4 pending=1 entries=1)
+nouveau/switch: pushbuf periodic logical=2603 native=1200 entries=968/2604 merged=1636 dwords=667929 completion=725/475 upgrades=1 kick_fail=0 retries=0 throttle=6/256 fences=954 waits=1 acquire_groups=234 full_barriers=5 bo_switches=6
+nouveau/switch: credits periodic current=189/849/536780 peak=256/1159/731628 retired=774 proactive=6/774 waits=6(6/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=2864 native=1320 entries=1064/2865 merged=1801 dwords=734900 completion=797/523 upgrades=1 kick_fail=0 retries=0 throttle=7/256 fences=1050 waits=1 acquire_groups=258 full_barriers=5 bo_switches=6
+nouveau/switch: credits periodic current=156/701/443352 peak=256/1159/731628 retired=903 proactive=7/903 waits=7(7/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: command BO switch (count=7 ring_index=2 ring_size=4 pending=1 entries=1)
+eidos: 59 fps
+nouveau/switch: pushbuf periodic logical=3126 native=1440 entries=1162/3127 merged=1965 dwords=802407 completion=871/569 upgrades=1 kick_fail=0 retries=0 throttle=7/256 fences=1147 waits=1 acquire_groups=281 full_barriers=5 bo_switches=7
+nouveau/switch: credits periodic current=253/1136/718772 peak=256/1159/731628 retired=903 proactive=7/903 waits=7(7/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=3387 native=1560 entries=1258/3388 merged=2130 dwords=869378 completion=943/617 upgrades=1 kick_fail=0 retries=0 throttle=8/256 fences=1243 waits=1 acquire_groups=305 full_barriers=5 bo_switches=7
+nouveau/switch: credits periodic current=220/989/625364 peak=256/1159/731628 retired=1032 proactive=8/1032 waits=8(8/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: command BO switch (count=8 ring_index=3 ring_size=4 pending=0 entries=0)
+nouveau/switch: pushbuf periodic logical=3648 native=1680 entries=1356/3650 merged=2294 dwords=936805 completion=1017/663 upgrades=1 kick_fail=0 retries=0 throttle=9/256 fences=1340 waits=1 acquire_groups=328 full_barriers=5 bo_switches=8
+nouveau/switch: credits periodic current=188/844/535120 peak=256/1159/731628 retired=1161 proactive=9/1161 waits=9(9/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 58 fps
+eidos: 3D features the GPU cannot draw: 0x0
+nouveau/switch: queued GM20B full barrier (count=6 pending_submits=4)
+nouveau/switch: pushbuf periodic logical=4045 native=1800 entries=1454/4047 merged=2593 dwords=1002623 completion=1093/707 upgrades=1 kick_fail=0 retries=0 throttle=10/256 fences=1436 waits=1 acquire_groups=350 full_barriers=6 bo_switches=8
+nouveau/switch: credits periodic current=157/706/433904 peak=256/1159/731628 retired=1290 proactive=10/1290 waits=10(10/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+eidos: 7 fps
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=5119 native=1920 entries=1562/5121 merged=3559 dwords=1070036 completion=1187/733 upgrades=1 kick_fail=0 retries=0 throttle=11/256 fences=1528 waits=1 acquire_groups=363 full_barriers=6 bo_switches=9
+nouveau/switch: credits periodic current=135/608/345508 peak=256/1159/731628 retired=1419 proactive=11/1419 waits=11(11/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 7 fps
+eidos: 7 fps
+nouveau/switch: pushbuf periodic logical=6045 native=2040 entries=1669/6047 merged=4378 dwords=1128822 completion=1281/759 upgrades=1 kick_fail=0 retries=0 throttle=11/256 fences=1619 waits=1 acquire_groups=376 full_barriers=6 bo_switches=9
+nouveau/switch: credits periodic current=242/1088/586516 peak=256/1159/731628 retired=1419 proactive=11/1419 waits=11(11/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 7 fps
+eidos: 6 fps
+nouveau/switch: pushbuf periodic logical=6608 native=2160 entries=1771/6610 merged=4839 dwords=1188926 completion=1363/797 upgrades=1 kick_fail=0 retries=0 throttle=12/256 fences=1711 waits=1 acquire_groups=395 full_barriers=6 bo_switches=10
+nouveau/switch: credits periodic current=214/960/502028 peak=256/1159/731628 retired=1548 proactive=12/1548 waits=12(12/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 7 fps
+eidos: 7 fps
+eidos: 11 fps
+nouveau/switch: pushbuf periodic logical=6864 native=2280 entries=1868/6866 merged=4998 dwords=1254571 completion=1437/843 upgrades=1 kick_fail=0 retries=0 throttle=13/256 fences=1808 waits=1 acquire_groups=418 full_barriers=6 bo_switches=10
+nouveau/switch: credits periodic current=182/816/480500 peak=256/1159/731628 retired=1677 proactive=13/1677 waits=13(13/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 17 fps
+nouveau/switch: pushbuf periodic logical=7125 native=2400 entries=1966/7127 merged=5161 dwords=1322115 completion=1511/889 upgrades=1 kick_fail=0 retries=0 throttle=14/256 fences=1906 waits=1 acquire_groups=441 full_barriers=6 bo_switches=11
+nouveau/switch: credits periodic current=150/673/422796 peak=256/1159/731628 retired=1806 proactive=14/1806 waits=14(14/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 15 fps
+ds call: 0x0216E471 -> overlay code
+eidos: 3 fps
+ds call: 0x021F36C1 -> overlay code
+bw_ds_ptr: VRAM 0x06898000 has no bank mapped; accesses there go nowhere, as on the DS
+ds call: 0x0216E469 -> overlay code
+ds call: 0x021F37D5 -> overlay code
+nouveau/switch: pushbuf periodic logical=7383 native=2520 entries=2063/7385 merged=5322 dwords=1388737 completion=1585/935 upgrades=1 kick_fail=0 retries=0 throttle=14/256 fences=2003 waits=1 acquire_groups=464 full_barriers=6 bo_switches=11
+nouveau/switch: credits periodic current=247/1107/694676 peak=256/1159/731628 retired=1806 proactive=14/1806 waits=14(14/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 15 fps
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=7643 native=2640 entries=2161/7645 merged=5484 dwords=1455287 completion=1659/981 upgrades=1 kick_fail=0 retries=0 throttle=15/256 fences=2100 waits=1 acquire_groups=487 full_barriers=6 bo_switches=12
+nouveau/switch: credits periodic current=215/964/602340 peak=256/1159/731628 retired=1935 proactive=15/1935 waits=15(15/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 24 fps
+nouveau/switch: queued GM20B full barrier (count=7 pending_submits=1)
+nouveau/switch: pushbuf periodic logical=8614 native=2760 entries=2263/8616 merged=6353 dwords=1534391 completion=1743/1017 upgrades=1 kick_fail=0 retries=0 throttle=16/256 fences=2194 waits=1 acquire_groups=505 full_barriers=7 bo_switches=12
+nouveau/switch: credits periodic current=188/834/566788 peak=256/1159/731628 retired=2064 proactive=16/2064 waits=16(16/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=10485 native=2880 entries=2371/10487 merged=8116 dwords=1624820 completion=1837/1043 upgrades=1 kick_fail=0 retries=0 throttle=17/256 fences=2287 waits=1 acquire_groups=518 full_barriers=7 bo_switches=13
+nouveau/switch: credits periodic current=166/710/569480 peak=256/1159/794168 retired=2193 proactive=17/2193 waits=17(17/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=12474 native=3000 entries=2480/12476 merged=9996 dwords=1716718 completion=1933/1067 upgrades=1 kick_fail=0 retries=0 throttle=18/256 fences=2382 waits=1 acquire_groups=530 full_barriers=7 bo_switches=14
+nouveau/switch: credits periodic current=145/614/505872 peak=256/1159/878420 retired=2322 proactive=18/2322 waits=18(18/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 11 fps
+nouveau/switch: pushbuf periodic logical=14284 native=3120 entries=2587/14286 merged=11699 dwords=1806337 completion=2027/1093 upgrades=1 kick_fail=0 retries=0 throttle=18/256 fences=2475 waits=1 acquire_groups=543 full_barriers=7 bo_switches=14
+nouveau/switch: credits periodic current=252/1067/869888 peak=256/1159/878420 retired=2322 proactive=18/2322 waits=18(18/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=16157 native=3240 entries=2695/16159 merged=13464 dwords=1897949 completion=2121/1119 upgrades=1 kick_fail=0 retries=0 throttle=19/256 fences=2569 waits=1 acquire_groups=556 full_barriers=7 bo_switches=15
+nouveau/switch: credits periodic current=230/977/791992 peak=256/1159/886388 retired=2451 proactive=19/2451 waits=19(19/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=18028 native=3360 entries=2804/18030 merged=15226 dwords=1989105 completion=2217/1143 upgrades=1 kick_fail=0 retries=0 throttle=20/256 fences=2664 waits=1 acquire_groups=568 full_barriers=7 bo_switches=16
+nouveau/switch: credits periodic current=209/888/716508 peak=256/1159/886388 retired=2580 proactive=20/2580 waits=20(20/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=19779 native=3480 entries=2910/19781 merged=16871 dwords=2077498 completion=2309/1171 upgrades=1 kick_fail=0 retries=0 throttle=21/256 fences=2757 waits=1 acquire_groups=582 full_barriers=7 bo_switches=16
+nouveau/switch: credits periodic current=186/790/636808 peak=256/1159/886388 retired=2709 proactive=21/2709 waits=21(21/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=21653 native=3600 entries=3019/21655 merged=18636 dwords=2169149 completion=2404/1196 upgrades=1 kick_fail=0 retries=0 throttle=22/256 fences=2851 waits=1 acquire_groups=595 full_barriers=7 bo_switches=17
+nouveau/switch: credits periodic current=165/702/563304 peak=256/1159/886388 retired=2838 proactive=22/2838 waits=22(22/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=23462 native=3720 entries=3126/23464 merged=20338 dwords=2258462 completion=2497/1223 upgrades=1 kick_fail=0 retries=0 throttle=23/256 fences=2943 waits=1 acquire_groups=608 full_barriers=7 bo_switches=18
+nouveau/switch: credits periodic current=142/604/487264 peak=256/1159/886388 retired=2967 proactive=23/2967 waits=23(23/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=25273 native=3840 entries=3233/25275 merged=22042 dwords=2348382 completion=2591/1249 upgrades=1 kick_fail=0 retries=0 throttle=23/256 fences=3036 waits=1 acquire_groups=621 full_barriers=7 bo_switches=18
+nouveau/switch: credits periodic current=249/1058/852496 peak=256/1159/886388 retired=2967 proactive=23/2967 waits=23(23/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=27265 native=3960 entries=3343/27267 merged=23924 dwords=2441293 completion=2688/1272 upgrades=1 kick_fail=0 retries=0 throttle=24/256 fences=3132 waits=1 acquire_groups=633 full_barriers=7 bo_switches=19
+nouveau/switch: credits periodic current=229/970/790008 peak=256/1159/886388 retired=3096 proactive=24/3096 waits=24(24/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=29135 native=4080 entries=3451/29137 merged=25686 dwords=2532571 completion=2783/1297 upgrades=1 kick_fail=0 retries=0 throttle=25/256 fences=3226 waits=1 acquire_groups=645 full_barriers=7 bo_switches=20
+nouveau/switch: credits periodic current=207/878/715936 peak=256/1159/886388 retired=3225 proactive=25/3225 waits=25(25/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=30886 native=4200 entries=3558/30888 merged=27330 dwords=2620531 completion=2875/1325 upgrades=1 kick_fail=0 retries=0 throttle=26/256 fences=3318 waits=1 acquire_groups=659 full_barriers=7 bo_switches=21
+nouveau/switch: credits periodic current=184/784/628576 peak=256/1159/886388 retired=3354 proactive=26/3354 waits=26(26/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=32759 native=4320 entries=3666/32761 merged=29095 dwords=2712182 completion=2970/1350 upgrades=1 kick_fail=0 retries=0 throttle=27/256 fences=3412 waits=1 acquire_groups=672 full_barriers=7 bo_switches=21
+nouveau/switch: credits periodic current=163/693/559944 peak=256/1159/886388 retired=3483 proactive=27/3483 waits=27(27/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=34687 native=4440 entries=3774/34689 merged=30915 dwords=2803056 completion=3065/1375 upgrades=1 kick_fail=0 retries=0 throttle=28/256 fences=3506 waits=1 acquire_groups=684 full_barriers=7 bo_switches=22
+nouveau/switch: credits periodic current=141/598/484328 peak=256/1159/886388 retired=3612 proactive=28/3612 waits=28(28/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 11 fps
+nouveau/switch: pushbuf periodic logical=36737 native=4560 entries=3884/36739 merged=32855 dwords=2897193 completion=3163/1397 upgrades=1 kick_fail=0 retries=0 throttle=28/256 fences=3602 waits=1 acquire_groups=695 full_barriers=7 bo_switches=23
+nouveau/switch: credits periodic current=250/1058/866472 peak=256/1159/886388 retired=3612 proactive=28/3612 waits=28(28/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=38488 native=4680 entries=3990/38490 merged=34500 dwords=2985586 completion=3255/1425 upgrades=1 kick_fail=0 retries=0 throttle=29/256 fences=3695 waits=1 acquire_groups=709 full_barriers=7 bo_switches=23
+nouveau/switch: credits periodic current=227/961/785716 peak=256/1159/886388 retired=3741 proactive=29/3741 waits=29(29/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=40478 native=4800 entries=4099/40480 merged=36381 dwords=3078266 completion=3351/1449 upgrades=1 kick_fail=0 retries=0 throttle=30/256 fences=3789 waits=1 acquire_groups=721 full_barriers=7 bo_switches=24
+nouveau/switch: credits periodic current=206/874/712292 peak=256/1159/886388 retired=3870 proactive=30/3870 waits=30(30/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=42409 native=4920 entries=4208/42411 merged=38203 dwords=3170227 completion=3447/1473 upgrades=1 kick_fail=0 retries=0 throttle=31/256 fences=3883 waits=1 acquire_groups=733 full_barriers=7 bo_switches=25
+nouveau/switch: credits periodic current=185/784/640752 peak=256/1159/886432 retired=3999 proactive=31/3999 waits=31(31/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=44279 native=5040 entries=4315/44281 merged=39966 dwords=3260791 completion=3541/1499 upgrades=1 kick_fail=0 retries=0 throttle=32/256 fences=3977 waits=1 acquire_groups=746 full_barriers=7 bo_switches=25
+nouveau/switch: credits periodic current=163/692/563720 peak=256/1159/886432 retired=4128 proactive=32/4128 waits=32(32/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=46091 native=5160 entries=4423/46093 merged=41670 dwords=3350711 completion=3635/1525 upgrades=1 kick_fail=0 retries=0 throttle=33/256 fences=4070 waits=1 acquire_groups=759 full_barriers=7 bo_switches=26
+nouveau/switch: credits periodic current=141/599/485292 peak=256/1159/886432 retired=4257 proactive=33/4257 waits=33(33/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=47962 native=5280 entries=4532/47964 merged=43432 dwords=3441989 completion=3731/1549 upgrades=1 kick_fail=0 retries=0 throttle=33/256 fences=4164 waits=1 acquire_groups=771 full_barriers=7 bo_switches=27
+nouveau/switch: credits periodic current=249/1057/855984 peak=256/1159/886432 retired=4257 proactive=33/4257 waits=33(33/0/0) time=0ms(0/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=49891 native=5400 entries=4639/49893 merged=45254 dwords=3532969 completion=3825/1575 upgrades=1 kick_fail=0 retries=0 throttle=34/256 fences=4257 waits=1 acquire_groups=784 full_barriers=7 bo_switches=27
+nouveau/switch: credits periodic current=227/963/780708 peak=256/1159/886432 retired=4386 proactive=34/4386 waits=34(34/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=51702 native=5520 entries=4747/51704 merged=46957 dwords=3622668 completion=3919/1601 upgrades=1 kick_fail=0 retries=0 throttle=35/256 fences=4350 waits=1 acquire_groups=797 full_barriers=7 bo_switches=28
+nouveau/switch: credits periodic current=205/869/705308 peak=256/1159/886432 retired=4515 proactive=35/4515 waits=35(35/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=53635 native=5640 entries=4856/53637 merged=48781 dwords=3715817 completion=4015/1625 upgrades=1 kick_fail=0 retries=0 throttle=36/256 fences=4446 waits=1 acquire_groups=809 full_barriers=7 bo_switches=29
+nouveau/switch: credits periodic current=184/781/632796 peak=256/1159/886432 retired=4644 proactive=36/4644 waits=36(36/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=55504 native=5760 entries=4964/55506 merged=50542 dwords=3805198 completion=4109/1651 upgrades=1 kick_fail=0 retries=0 throttle=37/256 fences=4539 waits=1 acquire_groups=822 full_barriers=7 bo_switches=30
+nouveau/switch: credits periodic current=162/688/556756 peak=256/1159/886432 retired=4773 proactive=37/4773 waits=37(37/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=57316 native=5880 entries=5071/57318 merged=52247 dwords=3895870 completion=4203/1677 upgrades=1 kick_fail=0 retries=0 throttle=38/256 fences=4633 waits=1 acquire_groups=835 full_barriers=7 bo_switches=30
+nouveau/switch: credits periodic current=140/595/480260 peak=256/1159/886432 retired=4902 proactive=38/4902 waits=38(38/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: queued GPU acquire wait (fences=1 pending_entries=0)
+nouveau/switch: pushbuf periodic logical=59187 native=6000 entries=5179/59189 merged=54010 dwords=3986434 completion=4297/1703 upgrades=1 kick_fail=0 retries=0 throttle=38/256 fences=4727 waits=1 acquire_groups=848 full_barriers=7 bo_switches=31
+nouveau/switch: credits periodic current=247/1050/848068 peak=256/1159/886432 retired=4902 proactive=38/4902 waits=38(38/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 12 fps
+nouveau/switch: pushbuf periodic logical=61178 native=6120 entries=5288/61180 merged=55892 dwords=4079340 completion=4393/1727 upgrades=1 kick_fail=0 retries=0 throttle=39/256 fences=4822 waits=1 acquire_groups=860 full_barriers=7 bo_switches=32
+nouveau/switch: credits periodic current=226/958/785492 peak=256/1159/886432 retired=5031 proactive=39/5031 waits=39(39/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=62988 native=6240 entries=5395/62990 merged=57595 dwords=4168959 completion=4487/1753 upgrades=1 kick_fail=0 retries=0 throttle=40/256 fences=4915 waits=1 acquire_groups=873 full_barriers=7 bo_switches=32
+nouveau/switch: credits periodic current=204/865/704784 peak=256/1159/887180 retired=5160 proactive=40/5160 waits=40(40/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=64799 native=6360 entries=5503/64801 merged=59298 dwords=4258617 completion=4581/1779 upgrades=1 kick_fail=0 retries=0 throttle=41/256 fences=5008 waits=1 acquire_groups=886 full_barriers=7 bo_switches=33
+nouveau/switch: credits periodic current=182/773/623164 peak=256/1159/887180 retired=5289 proactive=41/5289 waits=41(41/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=66610 native=6480 entries=5611/66612 merged=61001 dwords=4348241 completion=4675/1805 upgrades=1 kick_fail=0 retries=0 throttle=42/256 fences=5102 waits=1 acquire_groups=899 full_barriers=7 bo_switches=34
+nouveau/switch: credits periodic current=160/681/542592 peak=256/1159/887180 retired=5418 proactive=42/5418 waits=42(42/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps
+nouveau/switch: pushbuf periodic logical=68422 native=6600 entries=5718/68424 merged=62706 dwords=4438908 completion=4769/1831 upgrades=1 kick_fail=0 retries=0 throttle=43/256 fences=5195 waits=1 acquire_groups=912 full_barriers=7 bo_switches=34
+nouveau/switch: credits periodic current=138/587/472016 peak=256/1159/887180 retired=5547 proactive=43/5547 waits=43(43/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 13 fps
+nouveau/switch: pushbuf periodic logical=70293 native=6720 entries=5826/70295 merged=64469 dwords=4529472 completion=4863/1857 upgrades=1 kick_fail=0 retries=0 throttle=43/256 fences=5289 waits=1 acquire_groups=925 full_barriers=7 bo_switches=35
+nouveau/switch: credits periodic current=245/1042/839824 peak=256/1159/887180 retired=5547 proactive=43/5547 waits=43(43/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+nouveau/switch: pushbuf periodic logical=72046 native=6840 entries=5934/72048 merged=66114 dwords=4619368 completion=4957/1883 upgrades=1 kick_fail=0 retries=0 throttle=44/256 fences=5382 waits=1 acquire_groups=938 full_barriers=7 bo_switches=36
+nouveau/switch: credits periodic current=223/948/765192 peak=256/1159/887180 retired=5676 proactive=44/5676 waits=44(44/0/0) time=1ms(1/0/0) recovery=0/0 mapped=0/0/0 fallback=0 lag=0
+eidos: 14 fps

@@ -1,0 +1,14 @@
+# Run 45 — want=3 forced via screenshot flag (no new build)
+
+Same NRO as run 44 (/tmp/build-fix7, fix-round5+orphan+budget).
+Only change: console args.txt gained two lines (--screenshot /
+999999999, a frame never reached), so g_shot_count stays >0 all run
+and every frame counts as wanted. No screenshot is ever written.
+
+Decides, per round-4 Q3 S5 + round-5 plan: if the stuck-tail present
+growth disappears while readbacks flow every frame, the pile-up was
+abandoned PBO reads and the permanent fix is keep-draining (not
+gating harder). If it climbs anyway, the queue theory is dead.
+Park: Mistralton bench, no inputs, 120 s+. Watch: present flatness,
+g2dread level (expect ~run-26 ~22ms if reads flow), stuck tail Y/N,
+hitch autopsy lines.

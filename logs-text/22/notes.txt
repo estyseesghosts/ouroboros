@@ -1,0 +1,5 @@
+Run 11 (A5b batch #1), attribution: EIDOS_NXLINK=1, NOWAIT=1, EDGE=0, args --profile/300.
+Sphaira NXlink server failed twice (nxlink_attempt1.txt broken pipe; nxlink_attempt2.txt "Invalid response"). hbmenu netloader worked; nxlink run from mesa-switch-build-amd64 docker (-p 28771), output in stdout.txt.
+boot.txt: title mode. stdout: NV12B git-16732f6142, 0x0.
+scene_t0 11:20:37, scene_t120 11:22:38. Agent read: world RENDERS (gym, player, pilot, cannon). Awaiting maintainer verdict.
+Prof (field): ~62 ms/frame wall; render 39.9, main2d 9.4, geom 8.4, g3d 6.0, present 4.0, audio 4.1, step 3.4, boot3d 1.9, gldraw 1.1, snap 0.9, texdec 0.4, glread 0, unprem 0, wait 0.

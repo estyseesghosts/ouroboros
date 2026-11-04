@@ -1,0 +1,42 @@
+# Next-run checklist — switch/fix-h (Mistralton gym walk, see tools-local/session.sh)
+
+Branch: switch/fix-h (worktree src/wt/h), tip 9f12190.
+Base 1ea7e26 (switch/fix-gym). Merges in order H3 gate, H2 texfix,
+H1 uifix (disjoint files verified before each merge, no seams).
+No Mesa, no aletheia edits. Audio frozen at c42f825 (44100
+single-resample, not re-asked). All commits author
+terezi <jules@foxtails.me>, fix: prefix.
+
+- module build64/module/eidos_boot.wasm, 15419796 bytes,
+  sha256 0934ce691de85d29b33965be957b9aab86a122f05003c6890715fe52194b301f
+  (full MODULE_FLAGS -O2 -fno-strict-aliasing -fwrapv
+  -fno-delete-null-pointer-checks -D_GNU_SOURCE, no -O0, under 18MB cap)
+- NRO /tmp/build-h/eidos.nro, 53435172 bytes,
+  sha256 62d23cf52bf8102fc21451b04e0756ed64fac7f27be4c2c248ad90bad35b56a7
+  (native, cached mesa 16732f61427, --parts 96; delta vs fix-final NRO
+  52017956 bytes is +1417216 bytes — over 1MB, readelf -S recorded:
+  37 sections. Size delta is observed, not explained.)
+- strings: Mesa 16732f6 present (x2), drm_nouveau refs 0
+- desktop: cmake --build green, ctest 99/101 (only the 2 known
+  pre-existing fails, signatures identical to base 1ea7e26:
+  test_audio 31 checks 1 failure SEQ 1146 line 5 differs,
+  test_mod_wasm SEGFAULT Broken Wasm invalid section id).
+  test_gpu3d passes.
+
+What this build should do (vs run 46 on the gym build):
+- menus: no overlapping offset copies, no flicker (H1 gen split +
+  dirty-band row fix); static menu mostly ui_skip, blink repaints a band.
+- transitions: pool_hi flat after warmup, no >50ms game maxima outside
+  the first transition window (H2 per-slot revalidate + 2MB budget).
+- field want=0: g2dread ~0 with zero-copy path (H3 gate); a forced
+  show logs its reason (holding/paused/dispcap/shots) on stderr.
+
+Run book (tools-local/session.sh + logs/next/env.txt + args.txt):
+- Mistralton gym walk 120s+, handheld 1x, moving allowed (parked not
+  required), EDGE=0 then on.
+- want=3 diagnostic FIRST (present must fall, g2dread stays 0 — else STOP).
+- outlines-on repeat (world correct at any fps — P0 gate).
+- SoC temp start/end, scene shots start/end, nxlink -s stdout mandatory.
+- Validator must PASS (steady drift, scene match, NXEXIT=0, shots, temps)
+  or the run is void and nothing may be cited from it.
+Ask the human to run. Claim nothing here.

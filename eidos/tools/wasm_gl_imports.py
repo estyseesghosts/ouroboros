@@ -1,0 +1,482 @@
+#!/usr/bin/env python3
+"""wasm_gl_imports.py -- the host program's OpenGL imports for the wasm32 build.
+
+The module (eidos's wasm32 build, docs/lp64.md) calls OpenGL as imports from
+the "env" module: wasm2c declares each as w2c_env_<name>(struct w2c_env *,
+...), with every pointer a 32-bit offset into the module's memory.  This
+writes their definitions for the host program (host/): each loads the real
+entry point through SDL_GL_GetProcAddress on first use and calls it with the
+offsets turned into host pointers.
+
+The prototypes are read from SDL3's own GL headers (SDL_opengl.h,
+SDL_opengl_glext.h), so a type is the header's.  The names are the ones
+eidos uses (the module's import list, one per line, `--names`).  A few
+calls need more than a pointer conversion and are written by hand here:
+
+  glVertexAttribPointer, glDrawElements   the last pointer is an offset into
+                                          the bound buffer, not memory
+  glReadPixels                            the same while a pixel-pack buffer
+                                          is bound
+  glShaderSource                          an array of string addresses
+  glMapBuffer, glUnmapBuffer              the mapped buffer is copied into a
+                                          block of module memory and back
+
+On OpenGL ES 3.0 (Android, iOS; host_gl_es, set by host/sdl.c from the
+context's version string) a few of them change: the shaders' first line
+"#version 330 core" becomes "#version 300 es" with default precisions,
+glMapBuffer maps through glMapBufferRange, glClearDepth is glClearDepthf,
+glReadPixels of RGB bytes reads RGBA and keeps three of the four,
+and glColorMaski takes an extension's entry point or, without one, sets
+draw buffer 0 alone.  On iOS the window has no framebuffer 0: SDL's view
+draws into a framebuffer of its own (host_gl_window_fbo), which binding 0
+binds instead.  GL_MAX_INTEGER_SAMPLES, which OpenGL ES has from 3.1 on,
+reads 0 on ES 3.0 (no integer target multisamples) rather than raising
+GL_INVALID_ENUM.  A desktop context takes none of these paths.
+
+    wasm_gl_imports.py --sdl-include DIR --names FILE -o OUT.c
+"""
+
+import argparse
+import re
+import sys
+
+# C type -> (wasm2c type, how the argument becomes the host's)
+SCALAR = {
+    'GLenum': 'u32', 'GLuint': 'u32', 'GLint': 'u32', 'GLsizei': 'u32',
+    'GLbitfield': 'u32', 'GLboolean': 'u32', 'GLubyte': 'u32', 'GLbyte': 'u32',
+    'GLshort': 'u32', 'GLushort': 'u32', 'GLfloat': 'f32', 'GLclampf': 'f32',
+    'GLdouble': 'f64', 'GLclampd': 'f64', 'GLsizeiptr': 'u32', 'GLintptr': 'u32',
+    'GLchar': 'u32', 'GLuint64': 'u64', 'GLint64': 'u64',
+}
+
+PROTO = re.compile(
+    r'GLAPI\s+([\w\s\*]+?)\s*(?:GLAPIENTRY|APIENTRY)\s*(gl\w+)\s*\(([^;]*?)\)\s*;', re.S)
+
+SPECIAL = {'glVertexAttribPointer', 'glDrawElements', 'glReadPixels', 'glShaderSource',
+           'glMapBuffer', 'glMapBufferRange', 'glUnmapBuffer', 'glClearDepth', 'glColorMaski',
+           'glBindFramebuffer', 'glGetIntegerv'}
+
+
+def parse(headers):
+    protos = {}
+    for h in headers:
+        text = open(h, encoding='utf-8', errors='replace').read()
+        for ret, name, args in PROTO.findall(text):
+            args = ' '.join(args.split())
+            protos.setdefault(name, (' '.join(ret.split()), args))
+    return protos
+
+
+def split_args(args):
+    if args.strip() in ('', 'void'):
+        return []
+    out = []
+    for a in args.split(','):
+        a = a.strip()
+        m = re.match(r'(.*?)(\w+)$', a)
+        ctype = m.group(1).strip()
+        out.append((ctype, m.group(2)))
+    return out
+
+
+def wasm_type(ctype):
+    if '*' in ctype:
+        return 'u32'
+    base = ctype.replace('const', '').strip()
+    if base not in SCALAR:
+        raise SystemExit('wasm_gl_imports: unknown GL type %r' % ctype)
+    return SCALAR[base]
+
+
+def gen(name, ret, args):
+    params = split_args(args)
+    wparams = ['struct w2c_env *env'] + ['%s %s' % (wasm_type(t), n) for t, n in params]
+    wret = 'void' if ret == 'void' else wasm_type(ret)
+    lines = ['%s w2c_env_%s(%s)' % (wret, name, ', '.join(wparams)), '{']
+    lines.append('    static %s (APIENTRY *fn)(%s);' % (ret, ', '.join(t for t, _ in params) or 'void'))
+    call = []
+    for t, n in params:
+        if '*' in t:
+            call.append('(%s)gl_ptr(%s)' % (t, n))
+        else:
+            call.append('(%s)%s' % (t.replace('const', '').strip(), n))
+    lines.append('    (void)env;')
+    lines.append('    if (fn == NULL) {')
+    lines.append('        fn = (%s (APIENTRY *)(%s))gl_proc("%s");' % (ret, ', '.join(t for t, _ in params) or 'void', name))
+    lines.append('    }')
+    if ret == 'void':
+        lines.append('    fn(%s);' % ', '.join(call))
+    elif '*' in ret:
+        raise SystemExit('wasm_gl_imports: %s returns a pointer: write it by hand' % name)
+    else:
+        lines.append('    return (%s)fn(%s);' % (wret, ', '.join(call)))
+    lines.append('}')
+    return '\n'.join(lines)
+
+
+HEAD = r'''/*
+ * Generated by tools/wasm_gl_imports.py; do not edit.
+ *
+ * The module's OpenGL imports (host/): each loads its entry point through
+ * SDL_GL_GetProcAddress the first time, and turns the module's addresses
+ * into this program's pointers.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <SDL3/SDL.h>
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+/* SDL_opengl.h is empty on iOS: OpenGL ES's types, and the two of the
+ * desktop prototypes it lacks. */
+#include <OpenGLES/ES3/gl.h>
+typedef double GLdouble;
+typedef double GLclampd;
+#ifndef APIENTRY
+#define APIENTRY
+#endif
+#else
+#include <SDL3/SDL_opengl.h>
+#endif
+
+#include "host.h"
+
+/* A module address as a pointer; 0 stays NULL. */
+static void *gl_ptr(u32 addr)
+{
+    return addr == 0 ? NULL : host_ptr(addr, 0);
+}
+
+static void *gl_proc(const char *name)
+{
+    void *p = (void *)SDL_GL_GetProcAddress(name);
+
+    if (p == NULL) {
+        fprintf(stderr, "eidos: no OpenGL entry point %s\n", name);
+        abort();
+    }
+    return p;
+}
+
+/* OpenGL ES 3.0's shading language: the version line, and the precisions
+ * a desktop shader leaves to its defaults. */
+static const char k_es_head[] =
+    "#version 300 es\n"
+    "precision highp float;\n"
+    "precision highp int;\n"
+    "precision highp sampler2D;\n"
+    "precision highp usampler2D;\n"
+    "precision highp isampler2D;\n";
+
+void w2c_env_glVertexAttribPointer(struct w2c_env *env, u32 index, u32 size, u32 type, u32 normalized,
+                                   u32 stride, u32 offset)
+{
+    static void (APIENTRY *fn)(GLuint, GLint, GLenum, GLboolean, GLsizei, const void *);
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLuint, GLint, GLenum, GLboolean, GLsizei, const void *))
+             gl_proc("glVertexAttribPointer");
+    }
+    fn(index, (GLint)size, type, (GLboolean)normalized, (GLsizei)stride, (const void *)(uintptr_t)offset);
+}
+
+void w2c_env_glDrawElements(struct w2c_env *env, u32 mode, u32 count, u32 type, u32 offset)
+{
+    static void (APIENTRY *fn)(GLenum, GLsizei, GLenum, const void *);
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLenum, GLsizei, GLenum, const void *))gl_proc("glDrawElements");
+    }
+    fn(mode, (GLsizei)count, type, (const void *)(uintptr_t)offset);
+}
+
+void w2c_env_glReadPixels(struct w2c_env *env, u32 x, u32 y, u32 w, u32 h, u32 format, u32 type, u32 pixels)
+{
+    static void (APIENTRY *fn)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *);
+    static void (APIENTRY *geti)(GLenum, GLint *);
+    GLint pack = 0;
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *))gl_proc("glReadPixels");
+        geti = (void (APIENTRY *)(GLenum, GLint *))gl_proc("glGetIntegerv");
+    }
+    geti(0x88ED /* GL_PIXEL_PACK_BUFFER_BINDING */, &pack);
+    if (host_gl_es && pack == 0 && format == 0x1907 /* GL_RGB */ && type == 0x1401 /* GL_UNSIGNED_BYTE */) {
+        /* OpenGL ES reads RGBA bytes only: read those, keep RGB */
+        GLint align = 4;
+        size_t row, i, j;
+        unsigned char *rgba = (unsigned char *)malloc((size_t)w * h * 4u);
+        unsigned char *out = (unsigned char *)gl_ptr(pixels);
+
+        if (rgba == NULL || out == NULL) {
+            free(rgba);
+            return;
+        }
+        geti(0x0D05 /* GL_PACK_ALIGNMENT */, &align);
+        row = ((size_t)w * 3u + (size_t)align - 1u) / (size_t)align * (size_t)align;
+        fn((GLint)x, (GLint)y, (GLsizei)w, (GLsizei)h, 0x1908 /* GL_RGBA */, type, rgba);
+        for (j = 0; j < h; j++) {
+            for (i = 0; i < w; i++) {
+                memcpy(out + j * row + i * 3u, rgba + (j * w + i) * 4u, 3);
+            }
+        }
+        free(rgba);
+        return;
+    }
+    fn((GLint)x, (GLint)y, (GLsizei)w, (GLsizei)h, format, type,
+       pack != 0 ? (void *)(uintptr_t)pixels : gl_ptr(pixels));
+}
+
+void w2c_env_glShaderSource(struct w2c_env *env, u32 shader, u32 count, u32 strings, u32 lengths)
+{
+    static void (APIENTRY *fn)(GLuint, GLsizei, const GLchar *const *, const GLint *);
+    const GLchar *s[16];
+    u32 i;
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLuint, GLsizei, const GLchar *const *, const GLint *))gl_proc("glShaderSource");
+    }
+    for (i = 0; i < count && i < 16u; i++) {
+        u32 a;
+
+        memcpy(&a, host_ptr(strings + 4u * i, 4), 4);
+        s[i] = (const GLchar *)gl_ptr(a);
+    }
+    if (host_gl_es && i > 0 && lengths == 0 && strncmp(s[0], "#version 330 core\n", 18) == 0) {
+        size_t n = strlen(s[0] + 18);
+        char *es = (char *)malloc(sizeof k_es_head + n);
+
+        if (es != NULL) {
+            memcpy(es, k_es_head, sizeof k_es_head - 1);
+            memcpy(es + sizeof k_es_head - 1, s[0] + 18, n + 1);
+            s[0] = es;
+            fn(shader, (GLsizei)i, s, NULL);
+            free(es);
+            return;
+        }
+    }
+    fn(shader, (GLsizei)i, s, (const GLint *)gl_ptr(lengths));
+}
+
+void w2c_env_glGetIntegerv(struct w2c_env *env, u32 pname, u32 data)
+{
+    static void (APIENTRY *fn)(GLenum, GLint *);
+
+    (void)env;
+    if (host_gl_es && host_gl_es_version < 31 && pname == 0x9110 /* GL_MAX_INTEGER_SAMPLES */) {
+        GLint zero = 0;
+
+        if (gl_ptr(data) != NULL) {
+            memcpy(gl_ptr(data), &zero, sizeof zero);
+        }
+        return;
+    }
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLenum, GLint *))gl_proc("glGetIntegerv");
+    }
+    fn(pname, (GLint *)gl_ptr(data));
+}
+
+void w2c_env_glBindFramebuffer(struct w2c_env *env, u32 target, u32 fb)
+{
+    static void (APIENTRY *fn)(GLenum, GLuint);
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLenum, GLuint))gl_proc("glBindFramebuffer");
+    }
+    fn(target, fb == 0 ? host_gl_window_fbo : fb);
+}
+
+void w2c_env_glClearDepth(struct w2c_env *env, f64 depth)
+{
+    static void (APIENTRY *fn)(GLdouble);
+    static void (APIENTRY *fnf)(GLfloat);
+
+    (void)env;
+    if (host_gl_es) {
+        if (fnf == NULL) {
+            fnf = (void (APIENTRY *)(GLfloat))gl_proc("glClearDepthf");
+        }
+        fnf((GLfloat)depth);
+        return;
+    }
+    if (fn == NULL) {
+        fn = (void (APIENTRY *)(GLdouble))gl_proc("glClearDepth");
+    }
+    fn((GLdouble)depth);
+}
+
+void w2c_env_glColorMaski(struct w2c_env *env, u32 buf, u32 r, u32 g, u32 b, u32 a)
+{
+    typedef void (APIENTRY *MaskI)(GLuint, GLboolean, GLboolean, GLboolean, GLboolean);
+    typedef void (APIENTRY *Mask)(GLboolean, GLboolean, GLboolean, GLboolean);
+    static MaskI fn;
+    static Mask one;
+    static int looked;
+
+    (void)env;
+    if (!looked) {
+        looked = 1;
+        fn = (MaskI)SDL_GL_GetProcAddress("glColorMaski");
+        if (fn == NULL && host_gl_es) {
+            fn = (MaskI)SDL_GL_GetProcAddress("glColorMaskiEXT");
+        }
+        if (fn == NULL && host_gl_es) {
+            fn = (MaskI)SDL_GL_GetProcAddress("glColorMaskiOES");
+        }
+        if (fn == NULL && !host_gl_es) {
+            fn = (MaskI)gl_proc("glColorMaski");
+        }
+        one = (Mask)gl_proc("glColorMask");
+    }
+    if (fn != NULL) {
+        fn(buf, (GLboolean)r, (GLboolean)g, (GLboolean)b, (GLboolean)a);
+    } else if (buf == 0) {
+        one((GLboolean)r, (GLboolean)g, (GLboolean)b, (GLboolean)a);
+    }
+}
+
+/* A mapped buffer: copied into module memory (the module's own malloc), and
+ * back on unmap when it was mapped for writing. */
+static struct { u32 target, access, addr, cap, offset, length; void *host; } g_map[8];
+
+u32 w2c_env_glMapBufferRange(struct w2c_env *env, u32 target, u32 offset, u32 length, u32 access)
+{
+    static void *(APIENTRY *range)(GLenum, GLintptr, GLsizeiptr, GLbitfield);
+    static GLboolean (APIENTRY *unmap)(GLenum);
+    void *p;
+    void *dst;
+    int k, slot = -1;
+
+    (void)env;
+    if (range == NULL) {
+        range = (void *(APIENTRY *)(GLenum, GLintptr, GLsizeiptr, GLbitfield))
+                gl_proc("glMapBufferRange");
+        unmap = (GLboolean (APIENTRY *)(GLenum))gl_proc("glUnmapBuffer");
+    }
+    for (k = 0; k < 8; k++) {
+        if (g_map[k].host == NULL) {
+            slot = k;
+            break;
+        }
+    }
+    if (slot < 0) {
+        return 0;
+    }
+    p = range(target, (GLintptr)offset, (GLsizeiptr)length, (GLbitfield)access);
+    if (p == NULL) {
+        return 0;
+    }
+    if (g_map[slot].addr == 0 || g_map[slot].cap < length) {
+        u32 addr;
+
+        if (g_map[slot].addr != 0) {
+            host_free(g_map[slot].addr);
+            g_map[slot].addr = 0;
+            g_map[slot].cap = 0;
+        }
+        addr = host_malloc(length);
+        if (addr == 0) {
+            unmap(target);
+            return 0;
+        }
+        g_map[slot].addr = addr;
+        g_map[slot].cap = length;
+    }
+    if ((access & 1u /* GL_MAP_READ_BIT */) != 0) {
+        dst = host_ptr(g_map[slot].addr, length);
+        if (dst == NULL) {
+            unmap(target);
+            return 0;
+        }
+        memcpy(dst, p, (size_t)length);
+    }
+    g_map[slot].target = target;
+    g_map[slot].access = access;
+    g_map[slot].offset = offset;
+    g_map[slot].length = length;
+    g_map[slot].host = p;
+    return g_map[slot].addr;
+}
+
+u32 w2c_env_glMapBuffer(struct w2c_env *env, u32 target, u32 access)
+{
+    static void (APIENTRY *getp)(GLenum, GLenum, GLint *);
+    GLint size = 0;
+    u32 bits;
+
+    (void)env;
+    if (getp == NULL) {
+        getp = (void (APIENTRY *)(GLenum, GLenum, GLint *))gl_proc("glGetBufferParameteriv");
+    }
+    getp(target, 0x8764 /* GL_BUFFER_SIZE */, &size);
+    /* GL_MAP_READ_BIT 1, GL_MAP_WRITE_BIT 2 */
+    bits = access == 0x88B8 /* GL_READ_ONLY */ ? 1u :
+           access == 0x88B9 /* GL_WRITE_ONLY */ ? 2u : 3u;
+    return w2c_env_glMapBufferRange(env, target, 0, (u32)size, bits);
+}
+
+u32 w2c_env_glUnmapBuffer(struct w2c_env *env, u32 target)
+{
+    static GLboolean (APIENTRY *fn)(GLenum);
+    int k;
+
+    (void)env;
+    if (fn == NULL) {
+        fn = (GLboolean (APIENTRY *)(GLenum))gl_proc("glUnmapBuffer");
+    }
+    for (k = 0; k < 8; k++) {
+        if (g_map[k].host != NULL && g_map[k].target == target) {
+            if ((g_map[k].access & 2u /* GL_MAP_WRITE_BIT */) != 0) {
+                void *src = host_ptr(g_map[k].addr, g_map[k].length);
+
+                if (src != NULL) {
+                    memcpy(g_map[k].host, src, (size_t)g_map[k].length);
+                }
+            }
+            g_map[k].target = 0;
+            g_map[k].access = 0;
+            g_map[k].offset = 0;
+            g_map[k].length = 0;
+            g_map[k].host = NULL;
+            break;
+        }
+    }
+    return (u32)fn(target);
+}
+
+'''
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--sdl-include', required=True, help='the directory holding SDL3/')
+    ap.add_argument('--names', required=True, help='one GL function name a line')
+    ap.add_argument('-o', '--out', required=True)
+    a = ap.parse_args()
+    protos = parse([a.sdl_include + '/SDL3/SDL_opengl.h', a.sdl_include + '/SDL3/SDL_opengl_glext.h'])
+    names = [l.strip() for l in open(a.names) if l.strip().startswith('gl')]
+    out = [HEAD]
+    for n in sorted(set(names)):
+        if n in SPECIAL:
+            continue
+        if n not in protos:
+            sys.exit('wasm_gl_imports: no prototype for %s' % n)
+        out.append(gen(n, *protos[n]))
+        out.append('')
+    with open(a.out, 'w', newline='\n') as f:
+        f.write('\n'.join(out))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

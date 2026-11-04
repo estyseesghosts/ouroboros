@@ -1,0 +1,69 @@
+# Run 30 checklist — fix-round3 (switch/fix-round3) hardware session
+
+Branch: switch/fix-round3 (worktree src/wt/sall). Base: switch/perf-all
+tip 6372ae3. Merges in order: S1 bridge (verified present), S8 boost
+(verified present), S4 texture-probe (new delta), S5 clear/sort
+(verified present), S2 PBO gate (new), S6 boot wiring (new),
+S3 shadow (skip verified, fallback new), S7 query removal (new).
+Seam: S6 declares set_wanted locally, S2 defines it — signatures match,
+links at merge. No other seam edits.
+
+Phase 0 (the whole point): module dirs reconfigured with the FULL
+MODULE_FLAGS from tools/build64.py:34 —
+`-O2 -fno-strict-aliasing -fwrapv -fno-delete-null-pointer-checks
+-D_GNU_SOURCE`. Before: 216 objects, 36 at -O2, ~180 at -O0,
+wasm 27.7MB, NRO 61.9MB (runs 28/29 — all old numbers invalid).
+After: build.ninja shows 0 -O0, wasm ~14.5MB.
+
+Artifacts (recorded, not claimed as fps):
+- module: build-macos/module/eidos_boot.wasm, 14481711 bytes,
+  sha256 4b069ebef5319345636b4bdf0b1ad64ce4be8ce26e7df4da7dd3cfcc1e672757
+  (phase 0 pall module: 14476880 bytes, d264fdad — same flags, tiny
+  source delta from the 4 S-commits; both ~15MB as required)
+- NRO: /tmp/build-fix3/eidos.nro, 52005668 bytes,
+  sha256 885f30abbd5fc9c82da05da126fe01970cb93fba7e436e0294848c66be59c221
+  (delta vs run 29: -9970664 bytes, >1MB — readelf -S taken)
+- readelf -S eidos.elf: 37 section headers; .text 0x1d403b0 (~30.0MB),
+  down from the -O0 build; no new sections, no anomalies
+- strings: Mesa 16732f6142 present (x2), drm_nouveau refs 0
+- mesa-prefix: ~/.cache/eidos/mesa-switch/16732f61427b795abf37e40d957cb62213caec8a/mesa-install/opt/devkitpro/portlibs/switch
+- desktop: cmake --build green, ctest 99/101 — only test_audio +
+  test_mod_wasm, failing IDENTICALLY at base c707f58 (pre-existing:
+  SEQ 1146 1-byte oracle diff; broken-module segfault). test_gpu3d
+  passes incl. edge cases.
+
+Desktop behavior: unchanged by design (mask-3 default, same keys,
+same thresholds/debounce, neutral summary default kept, reuse deleted
+not bypassed). S1/S5/S8 verified-present, no churn.
+
+## Before the run
+
+- [ ] Mistralton bench spot (same as run 26), handheld 1x.
+- [ ] Copy logs/30/env.txt + logs/30/args.txt to the Switch session.
+- [ ] EIDOS_EDGE=0 for the first pair (outlines off until confirmed).
+- [ ] New baseline: runs 26/28/29 NEVER compare to this build (-O2 vs
+      -O0 changes everything). The first pair here is the new baseline.
+
+## The pairs (no fps claim without same-scene before/after)
+
+- [ ] want=3 diagnostic FIRST: force the mask (hold/capture path),
+      present must fall back toward run-26 levels while g2dread stays
+      0. Then re-gate: present must stay down. If present does not
+      fall, reopen the queue theory — stop, do not proceed to the pair.
+- [ ] Bench spot, NOWAIT, --profile 300. Hold 120 s or more.
+- [ ] Scene shots at start and end; nxlink -s, keep STDOUT — stderr
+      alone voids the profile.
+- [ ] Repeat the pair with outlines on (EIDOS_EDGE unset) to check
+      the 3D is correct, not black.
+
+## After the run
+
+- [ ] Save stdout, stderr, shots as logs/30/. Flat buckets = fix
+      held; renewed growth over 1200 frames = accumulation or heat —
+      report which (SoC temp at start/end helps).
+- [ ] Same-scene pair only: the new baseline vs itself (want=3 vs
+      gated). No comparison to 26/28/29.
+- [ ] Do not push, do not PR, do not claim fps here.
+
+Ask the human to run. No hardware runs were started in this plan.
+No Mesa or aletheia changes. No shared-engine behavior change for desktop.

@@ -1,0 +1,21 @@
+# Run 33 — one probe for both swap inquiries (instr-run c202f63)
+
+Build: switch/instr-run tip c202f63 (sampled prefin sync + EGL table).
+- module 14483686 bytes, sha256 f0e9c45e0f69e086cefcd8eac147d55d544879a1d8f16305815fcb44e83b43eb
+- NRO /tmp/build-instr3/eidos.nro, 52009764 bytes,
+  sha256 855efbe83760247a96a4a4c0093e6c7cd63a5f697d138f0ea0fcbb641a4cf557
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+
+Probe A (drain vs path): every 120th frame runs a timed full sync
+before the swap (bucket prefin, inside present). Read-out:
+prefin ~= preswap on probe frames => the wait is queued GPU work
+(upload/draw backlog — fix = fewer bytes: version canvas, smaller
+uploads, dirty rects). prefin ~= 0 with large preswap => the swap
+path itself (fix = EGL config).
+Probe B (what the driver offers): boot-time EGL table on stderr
+(cfg r/g/b/a/d/s/ms/caveat for every config). Read-out: which
+caveat-free configs exist vs our request (8/8/8/8, d0 s0, ms0,
+doublebuffer 1) — request exactly the accelerated one.
+
+Parked run (no inputs), 5+ min, several --profile 300 windows.
+Scene log throttled to 1/sec. No fps claim; discrimination only.

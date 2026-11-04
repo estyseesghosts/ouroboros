@@ -1,0 +1,5 @@
+NRO: out/eidos-a5b-diag.nro sha256 6eddac70fd13d7824fb9f7d31efcd41d259de4679b1ff8e5643a2aa49adf9456 (switch/mesa-a5b @ 42ad775), sent via nxlink to hbmenu netloader.
+Run 23: diag NRO, outlines on (default variant 1), EIDOS_EDGE_DIAG=1, EIDOS_NXLINK=1, launched via hbmenu netloader.
+Result: field still BLACK (scene_t0.jpg). pedge links ok, shaders compile ok, uniforms 0..7 all found.
+Every edge frame: "edge_pass entry: GL error 0x0502" (GL_INVALID_OPERATION already pending BEFORE the pass); post_fbo and fb->fbo complete 0x8CD5; fbo_attach 0; no errors from the pass itself.
+=> the edge pass is not the faulting call; something upstream raises INVALID_OPERATION only when outlines are on. Fail-safe does not trigger (pre-existing error). Next: bisect probes (diag2).

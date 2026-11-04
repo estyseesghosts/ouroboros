@@ -1,0 +1,19 @@
+# Run 37 — adaptive repaint gate (fix-round4 + agreement rule)
+
+Build: switch/fix-round4 tip fbc4b49 (+32 ui.c). The fixed-20th-frame
+quantum strobed anything animating on its own clock (at 5fps a paint
+every 20th frame is seconds apart). New rule: after each painted
+frame, hash the canvas coarsely (~1K order-weighted samples); while
+consecutive paints differ, paint at full rate; 30 agreeing paints
+wind down to skipping. /20 quantum stays as the aliasing backstop.
+Static menus skip exactly as before; anything moving paints smoothly.
+Cannot introduce new skipping artifacts (paints strictly more often
+than before while anything moves).
+
+- module 14484092 bytes, sha256 d748a795f87c31a10b38a57b396ca20ede6c5379b83e8d059b47e1755b20ae5b
+- NRO /tmp/build-fix6/eidos.nro, 52009764 bytes,
+  sha256 f239d592e3176969dc703ecad5312fbcc6e9de3590e0207278c0e1428eda193b
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+
+Watch: menus steady (no strobing), ui bucket low on static scenes,
+full rate while anything animates. Parked, no inputs.

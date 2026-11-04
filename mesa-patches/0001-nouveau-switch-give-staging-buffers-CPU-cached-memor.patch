@@ -1,0 +1,43 @@
+From 5d37f26e8e473518a74c188cfea1518c98de7fb7 Mon Sep 17 00:00:00 2001
+From: terezi <jules@foxtails.me>
+Date: Mon, 2 Nov 2026 17:40:41 -0500
+Subject: [PATCH 1/5] nouveau/switch: give staging buffers CPU-cached memory
+
+GL_*_READ buffers (PIPE_USAGE_STAGING) landed in the cpu-uncached GART
+slab pool, so per-frame glMapBuffer readbacks did uncached reads.
+Allocate them as dedicated cached BOs; bo_wait_fence already syncs the
+CPU cache from the GPU before reads.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ src/gallium/drivers/nouveau/nouveau_buffer.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/src/gallium/drivers/nouveau/nouveau_buffer.c b/src/gallium/drivers/nouveau/nouveau_buffer.c
+index 6f0f4c45c8c..680eec39ef1 100644
+--- a/src/gallium/drivers/nouveau/nouveau_buffer.c
++++ b/src/gallium/drivers/nouveau/nouveau_buffer.c
+@@ -98,6 +98,20 @@ nouveau_buffer_allocate(struct nouveau_screen *screen,
+          if (ret)
+             return false;
+          buf->offset = 0;
++      } else if (buf->base.usage == PIPE_USAGE_STAGING) {
++         /* GL_*_READ buffers (pixel-pack readback) are read by the CPU.
++          * The GART slab heap is CPU-uncached by default
++          * (NOUVEAU_SWITCH_GART_CPU_UNCACHED), and uncached CPU reads on
++          * the A57 are an order of magnitude slower.  Give them a
++          * dedicated CPU-cached NvMap; bo_wait_fence() invalidates it
++          * after GPU writes and sync_to_gpu() cleans CPU writes.
++          */
++         const int ret = nouveau_bo_new(
++            screen->device, NOUVEAU_BO_GART | NOUVEAU_BO_MAP,
++            0x1000, size, NULL, &buf->bo);
++         if (ret)
++            return false;
++         buf->offset = 0;
+       } else
+ #endif
+       {
+-- 
+2.54.0 (Apple Git-157)
+

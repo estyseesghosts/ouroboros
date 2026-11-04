@@ -1,0 +1,2 @@
+app pid 150; nav: manual, long holds
+PID 150 terminated (rc=0x00000000)

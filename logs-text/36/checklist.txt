@@ -1,0 +1,22 @@
+# Run 36 — scene-hold fix (fix-round4 + hysteresis) parked watch
+
+Branch: switch/fix-round4 tip 7f2263f (one commit on top of the round-4
+merge: `fix: hold the matched scene until it agrees 3 frames`, ui.c
++30). Desktop green (99/101, 2 known fails), test_gpu3d green.
+
+Why: run 31-35 scene log showed fallback/boot/field flapping every
+frame. Every flip restarted fades (fade_start on r!=g_last) and forced
+a repaint (S2 gate keys on scene change) = visible strobing + the
+paint savings never landed. Root: zero-hysteresis matcher reading
+gated/stale pixels. Fix: adopt a new match only after 3 agreeing
+frames; hold the previous adoption meanwhile. 2-frame transition lag
+max, imperceptible; flaps can no longer adopt.
+
+- module 14483800 bytes, sha256 1cf43853bf73de25a3bf0709f04e3dbc26b421fc0807f0cf393d5c59551e41be
+- NRO /tmp/build-fix5/eidos.nro, 52009764 bytes,
+  sha256 d8767ac8a073e1fdc3a24f7cfd7e48ba863a4468337ad478a241a1636b030dc8
+- strings: Mesa 16732f6142, drm_nouveau 0.
+
+Watch: scene log should go quiet (one line per real change, not per
+second); ui bucket should drop on static scenes; no strobing.
+Parked, no inputs. No fps claim — same-scene pair still required.

@@ -1,0 +1,79 @@
+// The app is SDL3's SDLActivity, which loads libSDL3.so and libmain.so
+// (the program host/ builds, android/build.py).  Both come from outside
+// the tree, and must come from the same SDL3 release:
+//
+//   -Peidos.sdl=<SDL3 source tree>       its android-project's Java classes
+//   -Peidos.jniLibs=<folder>             <abi>/libSDL3.so and <abi>/libmain.so
+
+plugins {
+    id 'com.android.application'
+}
+
+def sdlSource = project.findProperty('eidos.sdl')
+def jniLibsDir = project.findProperty('eidos.jniLibs')
+if (sdlSource == null || jniLibsDir == null) {
+    throw new GradleException('eidos: build with android/build.py, or pass -Peidos.sdl and -Peidos.jniLibs')
+}
+
+def eidosVersion() {
+    def cm = new File(rootDir, '../CMakeLists.txt').text
+    def m = cm =~ /(?m)^project\(eidos VERSION ([0-9.]+)/
+    return m.find() ? m.group(1) : '0.0.0'
+}
+
+def eidosVersionCode() {
+    def p = eidosVersion().tokenize('.').collect { it as int }
+    while (p.size() < 3) { p << 0 }
+    return p[0] * 10000 + p[1] * 100 + p[2]
+}
+
+android {
+    namespace = "org.projectholon.eidos"
+    compileSdkVersion 35
+    defaultConfig {
+        applicationId "org.projectholon.eidos"
+        minSdkVersion 26
+        targetSdkVersion 35
+        // the game's version (project(eidos VERSION x.y.z) of the top-level
+        // CMakeLists.txt); the code orders them: x * 10000 + y * 100 + z
+        versionCode eidosVersionCode()
+        versionName eidosVersion()
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+    // the project's own key, when the build is given one (the release
+    // workflow's ANDROID_KEYSTORE secret): every APK it signs updates the
+    // last in place
+    signingConfigs {
+        if (System.getenv('EIDOS_KEYSTORE')) {
+            project {
+                storeFile file(System.getenv('EIDOS_KEYSTORE'))
+                storePassword System.getenv('EIDOS_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('EIDOS_KEY_ALIAS')
+                keyPassword System.getenv('EIDOS_KEY_PASSWORD') ?: System.getenv('EIDOS_KEYSTORE_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (System.getenv('EIDOS_KEYSTORE')) {
+                signingConfig signingConfigs.project
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets.main {
+        java.srcDir "${sdlSource}/android-project/app/src/main/java"
+        jniLibs.srcDir jniLibsDir
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+    lint {
+        abortOnError = false
+    }
+}

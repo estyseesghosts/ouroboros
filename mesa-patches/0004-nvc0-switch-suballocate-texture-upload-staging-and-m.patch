@@ -1,0 +1,142 @@
+From 4b68dad9192faede1ddc9b4d3c826789d9857733 Mon Sep 17 00:00:00 2001
+From: terezi <jules@foxtails.me>
+Date: Mon, 2 Nov 2026 17:43:28 -0500
+Subject: [PATCH 4/5] nvc0/switch: suballocate texture upload staging and map
+ it unsynchronized
+
+Every write-only glTexSubImage took a fresh nouveau_bo_new for its staging
+copy (nvc0_transfer.c), i.e. a Horizon allocation, nvmap handle and zero-fill
+per upload; eidos re-uploads its DS screen/VRAM-derived textures every frame.
+Write-only miptree uploads now suballocate from the streaming mm_GART slabs
+(already CPU-uncached/GPU-cached, the same policy the dedicated BO used) and
+return the range with nouveau_mm_free_work on the copy's fence.
+
+Slab ranges are idle when handed out, but BO_MAP with NOUVEAU_BO_WR would
+make bo_wait_fence kick and CPU-fence-upgrade the slab's newest GPU use and
+block on it. Map those ranges with no access and only mark the BO CPU-dirty;
+the buffer staging path (nouveau_transfer_staging) gets the same treatment.
+logs/06 shows ~1 upgrade per frame (upgrades=25..320 over 120-kick windows
+at 11-20 fps) plus throttle waits at the 256 in-flight limit.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ src/gallium/drivers/nouveau/nouveau_buffer.c  | 18 +++++++-
+ .../drivers/nouveau/nvc0/nvc0_transfer.c      | 43 +++++++++++++++++++
+ 2 files changed, 59 insertions(+), 2 deletions(-)
+
+diff --git a/src/gallium/drivers/nouveau/nouveau_buffer.c b/src/gallium/drivers/nouveau/nouveau_buffer.c
+index 680eec39ef1..3b766da6f58 100644
+--- a/src/gallium/drivers/nouveau/nouveau_buffer.c
++++ b/src/gallium/drivers/nouveau/nouveau_buffer.c
+@@ -225,10 +225,24 @@ nouveau_transfer_staging(struct nouveau_context *nv,
+       tx->mm =
+          nouveau_mm_allocate(nv->screen->mm_GART, size, &tx->bo, &tx->offset);
+       if (tx->bo) {
++         uint32_t map_access = nouveau_switch_map_access(access);
++#ifdef __SWITCH__
++         /* A fresh slab range is idle (freed only after its fence), but a WR
++          * map would wait on, and CPU-fence-upgrade, the slab's newest GPU
++          * use. Write-only staging maps unsynchronized and only flags dirty.
++          */
++         const bool unsync = tx->mm && !(access & NOUVEAU_BO_RD);
++         if (unsync)
++            map_access = 0;
++#endif
+          tx->offset += adj;
+-         if (!BO_MAP(nv->screen, tx->bo,
+-                     nouveau_switch_map_access(access), NULL))
++         if (!BO_MAP(nv->screen, tx->bo, map_access, NULL)) {
+             tx->map = (uint8_t *)tx->bo->map + tx->offset;
++#ifdef __SWITCH__
++            if (unsync)
++               nouveau_switch_bo_mark_cpu_dirty(tx->bo);
++#endif
++         }
+       }
+    }
+    return tx->map;
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c b/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
+index 652e1447563..8e850cc8718 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_transfer.c
+@@ -2,6 +2,7 @@
+ #include "util/format/u_format.h"
+ 
+ #include "nvc0/nvc0_context.h"
++#include "nouveau_mm.h"
+ 
+ struct nvc0_transfer {
+    struct pipe_transfer base;
+@@ -9,6 +10,7 @@ struct nvc0_transfer {
+    uint32_t nblocksx;
+    uint16_t nblocksy;
+    uint16_t nlayers;
++   struct nouveau_mm_allocation *mm;
+ };
+ 
+ static void
+@@ -467,6 +469,25 @@ nvc0_miptree_transfer_map(struct pipe_context *pctx,
+       bo_flags |= NOUVEAU_BO_COHERENT | NOUVEAU_BO_SWITCH_GPU_CACHED;
+ #endif
+ 
++#ifdef __SWITCH__
++   /* Write-only uploads (DS framebuffer/VRAM textures every frame) take a
++    * suballocation of the streaming GART slabs instead of a fresh BO: a new
++    * BO costs a Horizon allocation, nvmap handle and zero-fill per
++    * glTexSubImage. The suballocation is returned only after the frame fence
++    * of its copy signals, so the CPU may write it without waiting on the
++    * slab's other in-flight users.
++    */
++   if (!(usage & PIPE_MAP_READ)) {
++      tx->mm = nouveau_mm_allocate(nvc0->screen->base.mm_GART,
++                                   size * tx->nlayers, &tx->rect[1].bo,
++                                   &tx->rect[1].base);
++      if (tx->rect[1].bo && !tx->mm) {
++         /* Too large for a slab: dedicated BO from the mm, nothing to share. */
++         tx->rect[1].base = 0;
++      }
++      ret = tx->rect[1].bo ? 0 : -1;
++   } else
++#endif
+    ret = nouveau_bo_new(dev, bo_flags, 0,
+                         size * tx->nlayers, NULL, &tx->rect[1].bo);
+    if (ret) {
+@@ -500,6 +521,26 @@ nvc0_miptree_transfer_map(struct pipe_context *pctx,
+       tx->rect[1].base = 0;
+    }
+ 
++#ifdef __SWITCH__
++   if (tx->mm) {
++      /* Map without the WR wait: bo_wait_fence would otherwise kick and
++       * upgrade the whole slab's last GPU use to a CPU fence and stall on it
++       * (the "upgrades" counter), although this range is already idle.
++       */
++      ret = BO_MAP(nvc0->base.screen, tx->rect[1].bo, 0, NULL);
++      if (ret) {
++         nouveau_mm_free(tx->mm);
++         nouveau_bo_ref(NULL, &tx->rect[1].bo);
++         pipe_resource_reference(&tx->base.resource, NULL);
++         FREE(tx);
++         return NULL;
++      }
++      nouveau_switch_bo_mark_cpu_dirty(tx->rect[1].bo);
++      *ptransfer = &tx->base;
++      return (uint8_t *)tx->rect[1].bo->map + tx->rect[1].base;
++   }
++#endif
++
+ #ifndef __SWITCH__
+    if (tx->rect[1].bo->map) {
+       *ptransfer = &tx->base;
+@@ -554,6 +595,8 @@ nvc0_miptree_transfer_unmap(struct pipe_context *pctx,
+       /* Allow the copies above to finish executing before freeing the source */
+       nouveau_fence_work(nvc0->base.fence,
+                          nouveau_fence_unref_bo, tx->rect[1].bo);
++      if (tx->mm)
++         nouveau_fence_work(nvc0->base.fence, nouveau_mm_free_work, tx->mm);
+    } else {
+       nouveau_bo_ref(NULL, &tx->rect[1].bo);
+    }
+-- 
+2.54.0 (Apple Git-157)
+

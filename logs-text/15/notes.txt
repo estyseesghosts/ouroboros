@@ -1,0 +1,6 @@
+Run 4 (A5b batch #1), EIDOS_EDGE=2. env/args prepped by agent; launch + navigation done by the maintainer by hand (agent's launch call was declined).
+No title.jpg (agent did not see the title screen). boot.txt shows title mode.
+scene_t0 ~10:47:00 (field already up when agent looked), scene_t120 10:49:04.
+Agent read: field BLACK under the Mistralton City HUD at t0 and t120. Awaiting maintainer verdict.
+Ended by maintainer closing the game.
+Collected: VALID (NV12B git-16732f6142, 0x0). Field fps ~13 steady (vs 4 in runs 13/14).

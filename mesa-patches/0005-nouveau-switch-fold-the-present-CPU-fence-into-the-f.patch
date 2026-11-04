@@ -1,0 +1,196 @@
+From 7816b59c93cda32b7db462b02cf4f7b5ccff088c Mon Sep 17 00:00:00 2001
+From: terezi <jules@foxtails.me>
+Date: Mon, 2 Nov 2026 17:46:52 -0500
+Subject: [PATCH 5/5] nouveau/switch: fold the present CPU fence into the frame
+ flush
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Every swap ended the frame with a GPU-mode kickoff (st_context_flush
+END_OF_FRAME) and then nouveau_switch_context_get_cpu_fence() found the
+tail fence not CPU-visible and issued a second, empty native submission
+just to get a CLEAN_L2 syncpoint for the compositor.  logs/06 shows this
+as upgrades≈cpu completions≈1 per frame (upgrades=447..536, +12-13 per
+120-kick window, ~1-2 s at 7-12 fps): an extra nvGpuChannelKickoff ioctl,
+GPFIFO entry and in-flight ledger slot per frame.
+
+- EGL now arms cpu_completion_requested on the context pushbuf before the
+  end-of-frame flush (swap and surface release), so the flush's own
+  kickoff carries the CPU-visible fence.  get_cpu_fence() then sees a
+  CPU-visible tail and returns it without submitting.  If a batch-limit
+  kick consumes the request mid-flush, get_cpu_fence() re-arms it and
+  behaves exactly as before.
+
+- bo_wait_fence() upgraded every GPU-only BO fence through a channel-2
+  wait+CPU-fence submission, even when the GPU only read the BO (e.g. a
+  CPU overwrite of a vertex/index/uniform buffer).  GPU-mode fences are
+  host1x syncpoints after ROP_WRITES_DONE and are CPU-pollable; they only
+  lack CLEAN_L2, which matters solely for GPU-written data.  Wait on the
+  producer syncpoint directly when the BO has no GPU write and is not
+  gpu_dirty; GPU-written BOs still take the upgrade.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0119Dj6V3EYCaXdwVkZ16BzZ
+---
+ src/egl/drivers/switch/egl_switch.c             |  7 +++++++
+ src/gallium/drivers/nouveau/nouveau_winsys.h    |  2 ++
+ .../nouveau/switch/nouveau_switch_libdrm.c      | 15 ++++++++++++---
+ .../nouveau/switch/nouveau_switch_public.h      |  3 +++
+ .../nouveau/switch/nouveau_switch_pushbuf.c     | 12 ++++++++++++
+ .../nouveau/switch/nouveau_switch_winsys.c      | 17 +++++++++++++++++
+ 6 files changed, 53 insertions(+), 3 deletions(-)
+
+diff --git a/src/egl/drivers/switch/egl_switch.c b/src/egl/drivers/switch/egl_switch.c
+index e29f31050b8..6f98bb3640a 100644
+--- a/src/egl/drivers/switch/egl_switch.c
++++ b/src/egl/drivers/switch/egl_switch.c
+@@ -297,6 +297,8 @@ switch_prepare_release_fence(struct st_context *st,
+         return SWITCH_RELEASE_GPU_ERROR;
+ 
+     if (st) {
++        /* Let the flush's own kickoff carry the CPU-visible release fence. */
++        nouveau_switch_context_request_cpu_fence(st->pipe);
+         st_context_flush(st, ST_FLUSH_END_OF_FRAME, NULL, NULL, NULL);
+         if (switch_record_context_error(st, surface, "release flush"))
+             return SWITCH_RELEASE_GPU_ERROR;
+@@ -2213,6 +2215,11 @@ switch_swap_buffers(_EGLDisplay *dpy, _EGLSurface *surf)
+       surface->attachments[ST_ATTACHMENT_BACK_LEFT];
+ 
+    TRACE("Flushing context\n");
++   /* Fold the CPU-visible release fence into the end-of-frame kickoff
++    * instead of upgrading it with a second, empty native submission in
++    * nouveau_switch_context_get_cpu_fence() below.
++    */
++   nouveau_switch_context_request_cpu_fence(context->st->pipe);
+    st_context_flush(context->st, ST_FLUSH_END_OF_FRAME, NULL, NULL, NULL);
+    if (switch_record_context_error(context->st, surface, "swap flush"))
+       return _eglError(EGL_BAD_SURFACE,
+diff --git a/src/gallium/drivers/nouveau/nouveau_winsys.h b/src/gallium/drivers/nouveau/nouveau_winsys.h
+index 386304b236b..66b707349e9 100644
+--- a/src/gallium/drivers/nouveau/nouveau_winsys.h
++++ b/src/gallium/drivers/nouveau/nouveau_winsys.h
+@@ -56,6 +56,8 @@ bool nouveau_switch_pushbuf_get_last_fence(
+    bool *cpu_visible_out);
+ int nouveau_switch_pushbuf_get_cpu_fence(
+    struct nouveau_pushbuf *push, NvFence *out_fence);
++void nouveau_switch_pushbuf_request_cpu_completion(
++   struct nouveau_pushbuf *push);
+ int nouveau_switch_pushbuf_upgrade_physical_cpu_fence(
+    struct nouveau_pushbuf *push, const NvFence *physical_fence,
+    NvFence *out_fence);
+diff --git a/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c b/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
+index 550b1bb4552..961cfc53cb4 100644
+--- a/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
++++ b/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
+@@ -1279,7 +1279,15 @@ bo_wait_fence(struct nouveau_switch_bo *bo, uint32_t access)
+       }
+ 
+       bool source_complete = false;
+-      if (!cpu_visible) {
++      /* The GPU-mode fence is a host1x syncpoint (ROP_WRITES_DONE) that the
++       * CPU can poll directly; it only lacks the CLEAN_L2 action.  When the
++       * GPU never wrote this BO there are no dirty L2 lines to clean, so
++       * waiting on it is sufficient and the channel-2 CPU-fence upgrade
++       * (an extra native submission on another channel) is unnecessary.
++       */
++      const bool gpu_wait_sufficient =
++         !(previous_access & NOUVEAU_BO_WR) && !gpu_dirty;
++      if (!cpu_visible && !gpu_wait_sufficient) {
+          if (!source) {
+             _debug_printf("nouveau/switch: BO %u has a GPU-only fence "
+                           "without a completion source\n", bo->base.handle);
+@@ -1343,7 +1351,8 @@ bo_wait_fence(struct nouveau_switch_bo *bo, uint32_t access)
+       }
+ 
+       if (!source_complete) {
+-         if (!cpu_visible || (int32_t)fence.id < 0) {
++         if ((!cpu_visible && (!gpu_wait_sufficient || !source)) ||
++             (int32_t)fence.id < 0) {
+             nouveau_switch_completion_source_unref(source);
+             return -EIO;
+          }
+@@ -1388,7 +1397,7 @@ bo_wait_fence(struct nouveau_switch_bo *bo, uint32_t access)
+       const bool unchanged =
+          bo->completion_source == source &&
+          bo->fence.id == fence.id && bo->fence.value == fence.value &&
+-         (source_complete || bo->fence_cpu_visible);
++         (source_complete || gpu_wait_sufficient || bo->fence_cpu_visible);
+       if (unchanged) {
+          bo->fence.id = NOUVEAU_HORIZON_INVALID_FENCE_ID;
+          bo->fence.value = 0;
+diff --git a/src/gallium/winsys/nouveau/switch/nouveau_switch_public.h b/src/gallium/winsys/nouveau/switch/nouveau_switch_public.h
+index 840b49767df..8d3b5ac152d 100644
+--- a/src/gallium/winsys/nouveau/switch/nouveau_switch_public.h
++++ b/src/gallium/winsys/nouveau/switch/nouveau_switch_public.h
+@@ -21,6 +21,7 @@ int nouveau_switch_context_finish_required(struct pipe_context *context,
+                                            const char *reason);
+ int nouveau_switch_context_get_cpu_fence(struct pipe_context *context,
+                                          NvFence *out_fence);
++void nouveau_switch_context_request_cpu_fence(struct pipe_context *context);
+ int nouveau_switch_pushbuf_kick_deferred(struct nouveau_pushbuf *push,
+                                          struct nouveau_object *chan);
+ int nouveau_switch_pushbuf_kick_full_barrier(
+@@ -32,6 +33,8 @@ bool nouveau_switch_pushbuf_get_last_fence(
+    bool *cpu_visible_out);
+ int nouveau_switch_pushbuf_get_cpu_fence(
+    struct nouveau_pushbuf *push, NvFence *out_fence);
++void nouveau_switch_pushbuf_request_cpu_completion(
++   struct nouveau_pushbuf *push);
+ int nouveau_switch_pushbuf_upgrade_physical_cpu_fence(
+    struct nouveau_pushbuf *push, const NvFence *physical_fence,
+    NvFence *out_fence);
+diff --git a/src/gallium/winsys/nouveau/switch/nouveau_switch_pushbuf.c b/src/gallium/winsys/nouveau/switch/nouveau_switch_pushbuf.c
+index 65650722193..4a0e46567ce 100644
+--- a/src/gallium/winsys/nouveau/switch/nouveau_switch_pushbuf.c
++++ b/src/gallium/winsys/nouveau/switch/nouveau_switch_pushbuf.c
+@@ -2392,6 +2392,18 @@ nouveau_switch_pushbuf_get_last_fence(struct nouveau_pushbuf *push,
+    return true;
+ }
+ 
++/* Make the next native kickoff end in a CPU-visible (CLEAN_L2) fence.  The
++ * EGL present path calls this before its end-of-frame flush so that flush's
++ * own kickoff carries the release fence; the following get_cpu_fence() then
++ * finds the tail already CPU-visible and needs no extra submission.
++ */
++void
++nouveau_switch_pushbuf_request_cpu_completion(struct nouveau_pushbuf *push)
++{
++   if (push)
++      nouveau_switch_pushbuf(push)->cpu_completion_requested = true;
++}
++
+ int
+ nouveau_switch_pushbuf_get_cpu_fence(struct nouveau_pushbuf *push,
+                                       NvFence *out_fence)
+diff --git a/src/gallium/winsys/nouveau/switch/nouveau_switch_winsys.c b/src/gallium/winsys/nouveau/switch/nouveau_switch_winsys.c
+index 7c8e08d84b9..dc8cf45fc5f 100644
+--- a/src/gallium/winsys/nouveau/switch/nouveau_switch_winsys.c
++++ b/src/gallium/winsys/nouveau/switch/nouveau_switch_winsys.c
+@@ -203,6 +203,23 @@ nouveau_switch_context_get_error(struct pipe_context *context)
+ 	return error;
+ }
+ 
++PUBLIC void
++nouveau_switch_context_request_cpu_fence(struct pipe_context *context)
++{
++   if (!context)
++      return;
++
++   struct nouveau_context *nv = nouveau_context(context);
++   if (!nv || !nv->pushbuf || !nv->screen)
++      return;
++
++   nouveau_screen_submission_lock(nv->screen);
++   simple_mtx_lock(&nv->screen->fence.lock);
++   nouveau_switch_pushbuf_request_cpu_completion(nv->pushbuf);
++   simple_mtx_unlock(&nv->screen->fence.lock);
++   nouveau_screen_submission_unlock(nv->screen);
++}
++
+ PUBLIC int
+ nouveau_switch_context_get_cpu_fence(struct pipe_context *context,
+                                      NvFence *out_fence)
+-- 
+2.54.0 (Apple Git-157)
+

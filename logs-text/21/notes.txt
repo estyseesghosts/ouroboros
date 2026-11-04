@@ -1,0 +1,3 @@
+Run 10 (A5b batch #1), MESA_SWITCH_GL_DRIVER=zink, outlines default.
+VOID for the Zink question: EGL init fails under zink ("Could not initialize EGL"), no "unknown MESA_SWITCH_GL_DRIVER" line (name recognised). SDL-renderer fallback window also fails ("EGL not initialized") -> eidos_boot runs headless; screen stays black, game never shows (scene_stuck.jpg). Maintainer closed it.
+Record: Zink not available in this build. Also an F1 data point: GL failure leaves no visible fallback.

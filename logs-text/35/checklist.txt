@@ -1,0 +1,24 @@
+# Run 35 checklist — fix-round4 (switch/fix-round4) parked watch
+
+Branch: switch/fix-round4 (worktree src/wt/r4all), tip e28780d.
+Merges in order: S1 canvas-upload skip, S2 UI-redraw gate, S3 hitch
+autopsy + megabyte audit (disjoint files, no seams).
+
+- module 14483606 bytes, sha256 bd1c83db291f6b038a5744f381c2cb797ad470bb537ddb3b08c85f79e886d15e
+- NRO /tmp/build-fix4/eidos.nro, 52009764 bytes,
+  sha256 54f04bb2934535caea146d1456e2ef577f11c4bff94dffaf8a5cb326db6903b2
+  (delta vs run 34: +0 bytes displayed size, +4KB vs fix-round3 NRO —
+  under 1MB, no readelf)
+- strings: Mesa 16732f6142 (x2), drm_nouveau 0
+- desktop: cmake --build green, ctest 99/101 (only the 2 known
+  pre-existing fails, identical signatures). test_gpu3d passes.
+
+What this build should do (parked, title/menu, no inputs):
+- static menu: canvas draw ~0 (ui bucket falls by the draw share),
+  canvas upload zero bytes after the first frame.
+- any input/scene/anim frame: draws + uploads fully, as today.
+- hitch autopsy line (if a >500ms frame hits): phase + top-3.
+
+Watch: ui bucket on menu scenes, present level, wall flatness,
+any autopsy line. No fps claim — same-scene pair still required.
+Stop after 4+ windows or on user exit.

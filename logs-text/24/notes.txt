@@ -1,0 +1,4 @@
+NRO: out/eidos-a5b-diag2.nro sha256 6b0910ca10b3b12ab357e8622d4b417b3488e20663082688089c2f55c522de6e (switch/mesa-a5b @ 3e7356c). Outlines on, EDGE_DIAG probes, paced (no NOWAIT), --profile 300.
+Result: field still BLACK (scene_t0.jpg). NO GL error at any probe (render_into, clears, backdrop, scene, edge_pass, fog, presenter, capture). FBOs complete, fbo_attach 0. render_into entry state on edge frames: program 9, vao 3, fb 0, unit 0.
+=> run 23's 0x0502 was not the cause (it did not recur); the edge pass writes black silently. Next: shader bisection (constant / colour copy / ID / depth).
+Profile (paced, outlines on): frames 1800-2100 window 49.2 ms/frame wall (~20 game fps) while the swap counter shows 4 fps -> confirms the fps counter counts swaps and paced runs skip presents; paced "4-7 fps" numbers (runs 12-20) understate game speed. 2100 window: render 22.9, geom 15.7, step 10.6, main2d 9.4, raster 6.0, g3d 5.8, audio 3.2, present 1.2.

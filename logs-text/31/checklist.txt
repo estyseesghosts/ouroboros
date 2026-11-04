@@ -1,0 +1,43 @@
+# Run 31 checklist — instr-run (switch/instr-run) full-diagnostic session
+
+Branch: switch/instr-run (worktree src/wt/instr), one commit on top of
+switch/fix-round3: `prof: split present into upload/draw/swap, add
+census, scene log` (7 files, +150/-9, terezi-authored).
+
+What is new in this build (instrumentation ONLY, no behavior change):
+- present split: PREUP (screen uploads in present_nn; canvas/panel
+  uploads counted in census), PREDRAW (draw submit + panel), PRESWAP
+  (swap alone). All nested inside PRESENT as documented in prof.h.
+- census per window: upbytes/upcalls/upskip (all texture uploads),
+  pboq/pbos (PBO enqueue vs skip), texup/texupn (3D texture uploads),
+  want (last want-mask), aqueue (audio queued frames).
+- unacc = wall - top-level sum (driver waits / unprobed glue),
+  window wall max (hitch detector), scene name logged on change
+  (which recipe owns the frame: intro vs field vs battle).
+
+Artifacts:
+- module: build-macos/module/eidos_boot.wasm, 14483542 bytes,
+  sha256 1c08a9d23a5a7b31ec33aaadd934df7e19e6cdd582fd125705b80005a25b6fcf
+- NRO: /tmp/build-instr/eidos.nro, 52009764 bytes,
+  sha256 e3fc629557266db0da79da0d9293fc44e938e5a20997283a9aa1c920ebcf7695
+- strings: Mesa 16732f6142 present (x2), drm_nouveau refs 0
+- desktop: cmake --build green, ctest 99/101 (only the 2 known
+  pre-existing fails, identical signatures). test_gpu3d passes.
+
+## Procedure (implementer runs it all over MCP + nxlink)
+
+- [x] logs/31/env.txt + args.txt staged (--profile/300, EDGE=0).
+- [ ] prep 31 to console (env/args, clear stderr/boot).
+- [ ] nxlink -s send /tmp/build-instr/eidos.nro, capture stdout.
+- [ ] watch: scene log (which scene), preup/predraw/preswap split,
+      upbytes/upcalls, pboq/pbos, want, texup, unacc, wall max.
+- [ ] WANT=3 DIAGNOSTIC FIRST: force the mask (hold/capture path or
+      temporary hard-code + rebuild) — present must fall with g2dread
+      at 0. Record both windows. If present does not fall, the queue
+      theory is dead; say so, stop forcing it.
+- [ ] Then: whatever scene the console reaches, hold still 120 s+,
+      take start/end screenshots, keep full stdout.
+- [ ] Report: per-scene bucket table, present split, census, unacc,
+      growth-or-flat verdict. No fps claim without a same-scene pair.
+
+Ask nothing of the human except the console at NetLoader. No pushes.

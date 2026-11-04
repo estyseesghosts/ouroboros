@@ -1,0 +1,5 @@
+Run 6 (A5b batch #1), EIDOS_EDGE=4. Launch + navigation by maintainer.
+scene_t0 10:54:30, scene_t120 10:56:31.
+Agent read: field BLACK under Mistralton City HUD at t0 and t120. Awaiting maintainer verdict.
+Ended by maintainer closing the game.
+Collected: VALID if both lines above present. Field fps mode:   73 13   49 14 

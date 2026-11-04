@@ -1,0 +1,15 @@
+run 28: perf-all switch/perf-all tip 6372ae3 (module d5454c3c, NRO 2fa261de),
+NOWAIT, EDGE=0, --profile 300, 3D interior (not the bench spot).
+
+Four consecutive 300-frame windows, degrading: 71.16 -> 107.15 ->
+187.30 -> 217.78 ms/frame wall. present dominates and grows:
+46.12 -> 42.96 -> 142.25 -> 169.40. g2dread stays ~0 (P1 gate holds),
+main2d 2-4 (P3 helps), game avg 4.6 -> 16 -> 12.5 -> 13 with a
+995.88 ms max hitch in window 2. fps lines decay 12 -> 4. User exited
+cleanly ("exiting ...", NXEXIT=0); console back at Sphaira 21:46.
+
+Slow-config line still prints (P8 EGL attrs did not move the driver
+off the slow config). No fps claim: wrong scene (real 3D here, ~0 at
+the bench) plus the progression. Open: heat (boost on) vs unbounded
+growth in new code (P6 gtex keys, P5 pool) — relaunch after cooldown
+discriminates (starts fast again = accumulation; starts slow = heat).

@@ -1,0 +1,11 @@
+# The value a src/game function returns on the DS when it falls off its end.
+# aletheia keeps these functions without a final return, because writing one
+# changes the bytes (aletheia docs/DEBT.tsv, missing-return).  On the DS the
+# caller reads whatever r0 holds; on x86 it would read garbage.  The compile
+# copy gets `return EXPR;` before the closing brace (tools/gamecut.py
+# add_returns, applied by tools/dsaddr.py).
+#
+# name  expression (in the function's own terms)
+#
+# Empty since aletheia 999783ad9d: src/game returns the DS value under
+# `#ifndef __MWERKS__` for every such function (aletheia docs/ORIGINAL_BUGS.tsv).

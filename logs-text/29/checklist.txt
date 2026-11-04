@@ -1,0 +1,57 @@
+# Run 29 checklist — fix-round2 (switch/fix-round2) hardware session
+
+Branch: switch/fix-round2 (worktree src/wt/qall), tip 6ea2785.
+Merges in order: Q5a hash-diet, Q5b present-version, Q5c texture-probe,
+Q2 sync-stall, Q4 ui-honest, Q6 plat-fixes, Q1 pbo-gate, Q3 boot-wire.
+Seams: set_wanted (Q1 impl, Q3 calls), summary (Q4 impl, Q3 real
+values, neutral 0,0,0,0 fallback), ui.h include unchanged. Merger adds:
+BufferSubData already tabled (round 1); host GetAudioStreamFormat shim
+(Q6's queued fix needs the import or the NRO does not link).
+
+Artifacts (recorded, not claimed as fps):
+- module: build-macos/module/eidos_boot.wasm, 27741755 bytes,
+  sha256 922d36fb709b6ef08cf9f0a996ef180198e65abcf15a5b347f4ec7bdcfe03d0f
+  (module delta vs round 1: +7085 bytes, under 1MB — no readelf)
+- NRO: /tmp/build-fix2/eidos.nro, 61975332 bytes,
+  sha256 19ce63d6e94e8579e6c2548350aabc2d18f3dcfcf3da88aa902e2067abaeee73
+  (NRO delta vs run 28: +32768 bytes, under 1MB — no readelf -S)
+- strings: Mesa 16732f6142 present (x2), drm_nouveau refs 0
+- mesa-prefix: ~/.cache/eidos/mesa-switch/16732f61427b795abf37e40d957cb62213caec8a/mesa-install/opt/devkitpro/portlibs/switch
+- desktop: cmake --build green, ctest 101 pass except test_audio +
+  test_mod_wasm, which fail IDENTICALLY at base c707f58 (pre-existing:
+  SEQ 1146 1-byte oracle diff; broken-module segfault). test_gpu3d
+  passes incl. edge cases. Module flags note (unchanged): -D_GNU_SOURCE
+  for wasi-sdk 25 (getentropy hidden otherwise).
+
+Desktop behavior: unchanged by design (mask-3 default = today, hash
+keys identical, thresholds/debounce identical, reuse deleted not
+bypassed, neutral summary default). Round-1 test stubs kept.
+
+## Before the run
+
+- [ ] Mistralton bench spot (same as runs 22/26), handheld 1x.
+- [ ] Copy logs/29/env.txt + logs/29/args.txt to the Switch session.
+- [ ] EIDOS_EDGE=0 for the first pair (outlines off until confirmed).
+
+## The pairs (no fps claim without same-scene before/after)
+
+- [ ] Bench spot, NOWAIT, --profile 300. Hold 120 s or more.
+- [ ] Present diagnostic first (Q1 S5 / Q3 S5): forcing want=3 must
+      bring present back down; then re-gated, present must stay down
+      while g2dread stays 0. If present does not fall, reopen R1 —
+      do not proceed to the on-pair.
+- [ ] Scene shots at start and end; nxlink -s, keep STDOUT — stderr
+      alone voids the profile.
+- [ ] Repeat the pair with outlines on (EIDOS_EDGE unset) to check
+      the 3D is correct, not black.
+
+## After the run
+
+- [ ] Save stdout, stderr, shots as logs/29/. Watch for the run-28
+      progression (71 -> 217ms over 1200 frames): flat buckets = fix
+      held; renewed growth = accumulation or heat, report which.
+- [ ] Same-scene pair only: run 26 vs run 29 numbers.
+- [ ] Do not push, do not PR, do not claim fps here.
+
+Ask the human to run. No hardware runs were started in this plan.
+No Mesa or aletheia changes. No shared-engine behavior change for desktop.

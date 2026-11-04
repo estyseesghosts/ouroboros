@@ -1,0 +1,3 @@
+run 25: diag3 (native build, sha256 e22e25e9...), EIDOS_EDGE_DEBUG=a (constant magenta), outlines on.
+Result: field 3D area BLACK (field.jpg); HUD fine. Log: "edge debug mode a", no edge-fail message, no GL error. 4 fps swap counter.
+Conclusion: edge fragment output never reaches the displayed image; shader content (alpha, ID, depth) ruled out; modes b-e moot.

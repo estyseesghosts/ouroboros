@@ -1,0 +1,837 @@
+Sending eidos-a5b-diag2.nro, 52874020 bytes
+17178988 sent (32.49%), 1452 blocks
+starting server
+server active ...
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+eidos_boot: arguments
+eidos_boot: firstrun
+eidos_boot: firstrun done
+eidos_boot: DS address space identity-mapped; 159 code pointers the metadata does not list relocated by the scan
+eidos: SDL_Init(0x20)
+eidos: SDL_Init -> 1 ()
+eidos: SDL_CreateWindow(1280 x 720, 0x2022)
+SDL_EGL_ChooseConfig: found a slow EGL config
+eidos: SDL_CreateWindow -> ok ()
+eidos: SDL_GL_CreateContext
+eidos: SDL_GL_CreateContext -> ok (That operation is not supported)
+eidos: OpenGL NV12B (OpenGL ES 3.2 Mesa 26.2.4 (git-16732f6142))
+eidos: edge diag: pedge link ok: 
+eidos: edge diag: edge vertex shader compile ok: 
+eidos: edge diag: edge fragment shader compile ok: 
+eidos: edge diag: uniforms col 0 id 1 dep 2 step 3 variant 4 cid 5 cdep 6 edge 7
+eidos: GPU 3D features 0x3, integer samples 8
+eidos: presenter OpenGL 3.3 (video driver Switch)
+eidos: SDL_InitSubSystem(0x2000)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: SDL_InitSubSystem(0x10)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: 19 fps
+eidos: 31 fps
+eidos: 24 fps
+eidos: 15 fps
+eidos: 29 fps
+prof frame 300 (300 frames, 20.09 ms/frame wall): step 0.35/3.79 g3d 7.55/18.53 main2d 5.96/6.25 sub2d 0.00/0.00 present 1.90/16.14 audio 0.61/2.16 wait 0.09/16.82 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 14.98/49.84 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 28 fps
+eidos: 17 fps
+eidos: 12 fps
+eidos: 14 fps
+eidos: 13 fps
+eidos: 14 fps
+eidos: 13 fps
+eidos: 14 fps
+eidos: 14 fps
+prof frame 600 (300 frames, 29.60 ms/frame wall): step 0.34/0.48 g3d 7.00/23.81 main2d 15.62/18.21 sub2d 0.00/0.00 present 1.73/5.59 audio 1.21/2.75 wait 0.00/0.01 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 23.86/35.55 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 14 fps
+eidos: 14 fps
+eidos: 13 fps
+eidos: 14 fps
+eidos: 14 fps
+eidos: 15 fps
+eidos: 14 fps
+eidos: 14 fps
+prof frame 900 (300 frames, 30.00 ms/frame wall): step 0.34/0.44 g3d 5.34/5.99 main2d 17.83/18.37 sub2d 0.00/0.00 present 1.79/5.77 audio 0.95/2.14 wait 0.00/0.01 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 24.47/27.17 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 15 fps
+eidos: 15 fps
+eidos: 14 fps
+eidos: 17 fps
+eidos: 14 fps
+eidos: 19 fps
+eidos: 16 fps
+eidos: 13 fps
+eidos: 14 fps
+prof frame 1200 (300 frames, 29.03 ms/frame wall): step 0.34/0.44 g3d 5.80/23.27 main2d 16.43/18.34 sub2d 0.00/0.00 present 1.82/4.91 audio 1.39/3.30 wait 0.00/0.01 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 23.54/36.03 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 13 fps
+eidos: 13 fps
+eidos: 14 fps
+eidos: 14 fps
+eidos: 13 fps
+eidos: 14 fps
+eidos: 14 fps
+eidos: 13 fps
+eidos: 14 fps
+prof frame 1500 (300 frames, 31.44 ms/frame wall): step 0.34/0.36 g3d 5.76/20.77 main2d 17.14/18.07 sub2d 0.00/0.00 present 1.80/7.38 audio 2.09/4.97 wait 0.02/2.60 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 24.18/35.79 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 3D features the GPU cannot draw: 0x0
+eidos: edge diag: render_into entry: program 33, vao 1, framebuffer 0, active texture 0x84C0
+eidos: edge diag: render_into entry: program 9, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: render_into entry: program 9, vao 3, framebuffer 0, active texture 0x84C0
+eidos: 5 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 2 fps
+eidos: 3 fps
+eidos: 3 fps
+eidos: 5 fps
+eidos: 6 fps
+eidos: 2 fps
+ds call: 0x0216E471 -> overlay code
+eidos: 3 fps
+ds call: 0x021F36C1 -> overlay code
+bw_ds_ptr: VRAM 0x06898000 has no bank mapped; accesses there go nowhere, as on the DS
+ds call: 0x0216E469 -> overlay code
+ds call: 0x021F37D5 -> overlay code
+eidos: 4 fps
+eidos: 9 fps
+eidos: 13 fps
+prof frame 1800 (300 frames, 71.88 ms/frame wall): step 4.00/46.10 g3d 25.48/107.55 main2d 14.12/23.81 sub2d 0.00/0.00 present 1.13/4.91 audio 3.13/5.30 wait 0.00/0.01 geom 12.68/45.76 raster 0.06/19.49 snap 1.78/22.16 texdec 0.77/2.61 gldraw 1.35/4.64 glup 0.01/3.71 render 41.00/118.73 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.43/1.22 (avg/max ms)
+eidos: 12 fps
+eidos: 14 fps
+eidos: edge diag: edge frame 1, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: edge diag: edge frame 2, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: edge diag: edge frame 3, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 9 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 2100 (300 frames, 49.18 ms/frame wall): step 10.57/25.82 g3d 5.80/17.82 main2d 9.44/9.83 sub2d 0.00/0.00 present 1.24/6.24 audio 3.23/4.96 wait 0.00/0.01 geom 15.65/25.48 raster 6.03/16.29 snap 0.94/1.95 texdec 0.37/0.11 gldraw 1.62/19.16 glup 0.02/4.78 render 22.88/50.04 boot3d 1.70/30.72 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 600 (edge frame 489): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 2400 (300 frames, 53.75 ms/frame wall): step 13.01/25.83 g3d 6.05/6.77 main2d 9.45/9.80 sub2d 0.00/0.00 present 1.06/6.07 audio 3.59/5.09 wait 0.00/0.01 geom 18.10/25.49 raster 8.08/16.34 snap 0.94/1.96 texdec 0.37/0.11 gldraw 2.07/2.32 glup 0.00/0.00 render 25.14/49.72 boot3d 2.12/2.62 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 600, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 2700 (300 frames, 53.70 ms/frame wall): step 13.00/25.78 g3d 6.05/6.63 main2d 9.43/9.78 sub2d 0.00/0.00 present 1.06/6.43 audio 3.61/5.08 wait 0.00/0.01 geom 18.08/25.44 raster 8.08/16.22 snap 0.94/1.93 texdec 0.37/0.14 gldraw 2.07/2.45 glup 0.00/0.00 render 25.10/49.76 boot3d 2.12/2.49 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 1200 (edge frame 1089): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 3000 (300 frames, 53.67 ms/frame wall): step 13.00/25.81 g3d 6.04/7.06 main2d 9.44/9.82 sub2d 0.00/0.00 present 1.06/5.98 audio 3.58/5.06 wait 0.00/0.01 geom 18.08/25.47 raster 8.08/16.31 snap 0.94/1.96 texdec 0.37/0.11 gldraw 2.07/2.47 glup 0.00/0.01 render 25.10/49.83 boot3d 2.12/2.89 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 1200, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 3300 (300 frames, 53.70 ms/frame wall): step 13.00/25.76 g3d 6.07/6.81 main2d 9.43/9.78 sub2d 0.00/0.00 present 1.05/5.62 audio 3.63/4.97 wait 0.00/0.02 geom 18.08/25.42 raster 8.08/16.24 snap 0.94/1.96 texdec 0.37/0.15 gldraw 2.07/2.72 glup 0.00/0.00 render 25.08/49.36 boot3d 2.12/2.77 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 1800 (edge frame 1689): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 3600 (300 frames, 53.66 ms/frame wall): step 12.99/25.79 g3d 6.05/6.72 main2d 9.43/9.76 sub2d 0.00/0.00 present 1.07/6.24 audio 3.58/5.05 wait 0.00/0.01 geom 18.07/25.44 raster 8.07/16.31 snap 0.94/1.99 texdec 0.37/0.12 gldraw 2.08/2.33 glup 0.00/0.00 render 25.10/49.32 boot3d 2.13/2.60 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 1800, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 3900 (300 frames, 53.65 ms/frame wall): step 12.99/25.73 g3d 6.03/7.19 main2d 9.43/9.78 sub2d 0.00/0.00 present 1.07/6.70 audio 3.58/5.08 wait 0.00/0.01 geom 18.07/25.39 raster 8.07/16.21 snap 0.94/1.93 texdec 0.37/0.11 gldraw 2.08/3.21 glup 0.00/0.00 render 25.08/49.18 boot3d 2.13/3.27 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 2400 (edge frame 2289): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 4200 (300 frames, 53.66 ms/frame wall): step 12.99/25.74 g3d 6.05/6.80 main2d 9.43/9.81 sub2d 0.00/0.00 present 1.06/6.32 audio 3.62/5.06 wait 0.00/0.02 geom 18.07/25.40 raster 8.07/16.23 snap 0.94/1.97 texdec 0.37/0.10 gldraw 2.07/2.27 glup 0.00/0.00 render 25.09/49.58 boot3d 2.12/2.85 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 2400, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 4500 (300 frames, 53.60 ms/frame wall): step 12.99/25.78 g3d 6.04/6.77 main2d 9.43/9.77 sub2d 0.00/0.00 present 1.06/5.84 audio 3.55/4.99 wait 0.00/0.01 geom 18.07/25.44 raster 8.07/16.32 snap 0.94/1.96 texdec 0.37/0.12 gldraw 2.08/3.06 glup 0.00/0.01 render 25.09/49.47 boot3d 2.13/3.11 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 3000 (edge frame 2889): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 4800 (300 frames, 53.65 ms/frame wall): step 12.99/25.74 g3d 6.03/6.75 main2d 9.43/9.77 sub2d 0.00/0.00 present 1.05/5.56 audio 3.62/5.09 wait 0.00/0.01 geom 18.07/25.40 raster 8.07/16.22 snap 0.94/1.96 texdec 0.37/0.14 gldraw 2.07/2.35 glup 0.00/0.01 render 25.07/49.66 boot3d 2.12/2.67 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 3000, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 5100 (300 frames, 53.68 ms/frame wall): step 12.99/25.81 g3d 6.04/6.75 main2d 9.44/9.78 sub2d 0.00/0.00 present 1.05/6.28 audio 3.59/5.04 wait 0.00/0.01 geom 18.07/25.47 raster 8.07/16.31 snap 0.94/1.97 texdec 0.37/0.10 gldraw 2.08/2.55 glup 0.00/0.00 render 25.12/49.07 boot3d 2.13/2.60 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 3600 (edge frame 3489): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 5400 (300 frames, 53.68 ms/frame wall): step 12.98/25.71 g3d 6.04/6.86 main2d 9.43/9.79 sub2d 0.00/0.00 present 1.05/5.53 audio 3.59/5.07 wait 0.00/0.02 geom 18.07/25.37 raster 8.07/16.22 snap 0.94/1.94 texdec 0.37/0.11 gldraw 2.07/2.33 glup 0.00/0.00 render 25.12/49.79 boot3d 2.12/2.64 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 3600, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 5700 (300 frames, 53.66 ms/frame wall): step 12.98/25.74 g3d 6.03/6.89 main2d 9.43/9.77 sub2d 0.00/0.00 present 1.05/5.37 audio 3.64/5.08 wait 0.00/0.01 geom 18.06/25.40 raster 8.06/16.20 snap 0.94/1.97 texdec 0.37/0.11 gldraw 2.07/2.42 glup 0.00/0.00 render 25.08/49.52 boot3d 2.12/2.47 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 4200 (edge frame 4089): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 6000 (300 frames, 53.64 ms/frame wall): step 12.99/25.78 g3d 6.05/6.83 main2d 9.43/9.79 sub2d 0.00/0.00 present 1.05/5.76 audio 3.53/4.95 wait 0.00/0.01 geom 18.07/25.44 raster 8.07/16.22 snap 0.94/1.97 texdec 0.37/0.11 gldraw 2.07/2.35 glup 0.00/0.01 render 25.14/49.67 boot3d 2.13/3.16 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 4200, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 6300 (300 frames, 53.64 ms/frame wall): step 12.99/25.78 g3d 6.03/6.75 main2d 9.42/9.76 sub2d 0.00/0.00 present 1.06/5.86 audio 3.60/5.11 wait 0.00/0.01 geom 18.07/25.43 raster 8.07/16.24 snap 0.94/1.96 texdec 0.37/0.15 gldraw 2.07/2.64 glup 0.00/0.01 render 25.09/49.45 boot3d 2.12/2.69 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 4800 (edge frame 4689): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 6600 (300 frames, 53.68 ms/frame wall): step 12.99/25.74 g3d 6.04/6.78 main2d 9.43/9.80 sub2d 0.00/0.00 present 1.06/6.09 audio 3.60/5.06 wait 0.00/0.01 geom 18.07/25.40 raster 8.07/16.20 snap 0.94/1.97 texdec 0.37/0.11 gldraw 2.07/2.35 glup 0.00/0.00 render 25.09/49.77 boot3d 2.12/2.58 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 4800, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 6900 (300 frames, 53.64 ms/frame wall): step 12.99/25.75 g3d 6.04/6.93 main2d 9.43/9.80 sub2d 0.00/0.00 present 1.06/6.94 audio 3.57/5.09 wait 0.00/0.01 geom 18.06/25.40 raster 8.07/16.22 snap 0.94/1.99 texdec 0.37/0.14 gldraw 2.07/2.46 glup 0.00/0.01 render 25.11/49.73 boot3d 2.12/2.51 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 5400 (edge frame 5289): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 7200 (300 frames, 53.66 ms/frame wall): step 12.99/25.77 g3d 6.03/6.74 main2d 9.43/9.80 sub2d 0.00/0.00 present 1.06/5.60 audio 3.64/5.05 wait 0.00/0.02 geom 18.07/25.43 raster 8.07/16.31 snap 0.94/1.97 texdec 0.37/0.15 gldraw 2.08/2.30 glup 0.00/0.01 render 25.06/49.42 boot3d 2.13/2.67 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 5400, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 7500 (300 frames, 53.57 ms/frame wall): step 12.99/25.77 g3d 6.04/6.90 main2d 9.43/9.80 sub2d 0.00/0.00 present 1.06/6.24 audio 3.54/4.95 wait 0.00/0.01 geom 18.07/25.42 raster 8.07/16.26 snap 0.94/1.98 texdec 0.37/0.11 gldraw 2.08/2.59 glup 0.00/0.00 render 25.08/49.96 boot3d 2.13/2.64 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 6000 (edge frame 5889): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 7800 (300 frames, 53.68 ms/frame wall): step 12.99/25.76 g3d 6.05/6.82 main2d 9.43/9.75 sub2d 0.00/0.00 present 1.06/5.87 audio 3.60/5.06 wait 0.00/0.01 geom 18.07/25.42 raster 8.08/16.21 snap 0.94/1.92 texdec 0.37/0.11 gldraw 2.07/2.46 glup 0.00/0.00 render 25.11/49.37 boot3d 2.12/3.74 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 6000, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 8100 (300 frames, 53.63 ms/frame wall): step 12.99/25.71 g3d 6.02/6.73 main2d 9.42/9.73 sub2d 0.00/0.00 present 1.07/7.25 audio 3.61/5.04 wait 0.00/0.01 geom 18.06/25.36 raster 8.07/16.21 snap 0.94/1.96 texdec 0.37/0.13 gldraw 2.08/2.43 glup 0.00/0.00 render 25.04/49.34 boot3d 2.12/2.48 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 6600 (edge frame 6489): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 8400 (300 frames, 53.61 ms/frame wall): step 12.98/25.75 g3d 6.02/6.85 main2d 9.43/9.72 sub2d 0.00/0.00 present 1.05/5.79 audio 3.56/5.07 wait 0.00/0.01 geom 18.06/25.40 raster 8.07/16.28 snap 0.94/1.93 texdec 0.37/0.15 gldraw 2.07/2.32 glup 0.00/0.01 render 25.10/49.60 boot3d 2.12/2.75 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 6600, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 8700 (300 frames, 53.62 ms/frame wall): step 12.98/25.76 g3d 6.04/6.98 main2d 9.41/9.79 sub2d 0.00/0.00 present 1.06/7.01 audio 3.63/5.03 wait 0.00/0.02 geom 18.05/25.42 raster 8.06/16.21 snap 0.94/1.96 texdec 0.37/0.16 gldraw 2.07/2.48 glup 0.00/0.00 render 25.03/49.79 boot3d 2.12/2.53 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 7200 (edge frame 7089): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 9000 (300 frames, 53.59 ms/frame wall): step 12.98/25.72 g3d 6.04/6.84 main2d 9.42/9.81 sub2d 0.00/0.00 present 1.06/8.43 audio 3.56/4.97 wait 0.00/0.01 geom 18.05/25.38 raster 8.07/16.21 snap 0.94/1.94 texdec 0.37/0.14 gldraw 2.07/2.34 glup 0.00/0.00 render 25.08/49.33 boot3d 2.12/2.69 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 7200, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 9300 (300 frames, 53.63 ms/frame wall): step 12.98/25.74 g3d 6.03/6.86 main2d 9.42/9.78 sub2d 0.00/0.00 present 1.06/5.64 audio 3.57/5.05 wait 0.00/0.02 geom 18.06/25.40 raster 8.07/16.28 snap 0.94/1.94 texdec 0.37/0.11 gldraw 2.08/2.84 glup 0.00/0.00 render 25.10/49.55 boot3d 2.12/2.89 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 7800 (edge frame 7689): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 9600 (300 frames, 53.65 ms/frame wall): step 12.98/25.74 g3d 6.03/6.92 main2d 9.42/9.76 sub2d 0.00/0.00 present 1.06/5.43 audio 3.61/5.05 wait 0.00/0.01 geom 18.06/25.40 raster 8.07/16.30 snap 0.94/1.93 texdec 0.37/0.11 gldraw 2.07/2.51 glup 0.00/0.00 render 25.08/49.39 boot3d 2.12/2.94 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 7800, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 9900 (300 frames, 53.58 ms/frame wall): step 12.98/25.72 g3d 6.02/6.83 main2d 9.42/9.82 sub2d 0.00/0.00 present 1.06/7.44 audio 3.55/4.94 wait 0.00/0.01 geom 18.06/25.38 raster 8.07/16.22 snap 0.94/1.93 texdec 0.37/0.14 gldraw 2.07/2.76 glup 0.00/0.00 render 25.07/49.19 boot3d 2.12/2.81 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 8400 (edge frame 8289): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 10200 (300 frames, 53.65 ms/frame wall): step 12.99/25.75 g3d 6.04/6.75 main2d 9.43/9.79 sub2d 0.00/0.00 present 1.05/5.81 audio 3.63/5.00 wait 0.00/0.01 geom 18.06/25.41 raster 8.07/16.24 snap 0.94/1.97 texdec 0.37/0.16 gldraw 2.08/2.54 glup 0.00/0.01 render 25.08/49.16 boot3d 2.13/2.94 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 8400, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 10500 (300 frames, 53.58 ms/frame wall): step 12.98/25.73 g3d 6.04/6.75 main2d 9.42/9.77 sub2d 0.00/0.00 present 1.06/7.20 audio 3.57/5.09 wait 0.00/0.01 geom 18.05/25.39 raster 8.07/16.28 snap 0.94/1.96 texdec 0.37/0.16 gldraw 2.08/2.72 glup 0.00/0.01 render 25.07/49.74 boot3d 2.12/2.77 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 9000 (edge frame 8889): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 10800 (300 frames, 53.59 ms/frame wall): step 12.98/25.72 g3d 6.02/6.99 main2d 9.42/9.77 sub2d 0.00/0.00 present 1.06/6.32 audio 3.58/5.02 wait 0.00/0.01 geom 18.05/25.38 raster 8.07/16.20 snap 0.94/1.95 texdec 0.37/0.11 gldraw 2.07/2.29 glup 0.00/0.01 render 25.06/49.42 boot3d 2.12/2.61 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 9000, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 11100 (300 frames, 53.60 ms/frame wall): step 12.98/25.75 g3d 6.02/6.77 main2d 9.41/9.75 sub2d 0.00/0.00 present 1.06/8.18 audio 3.62/5.04 wait 0.00/0.01 geom 18.05/25.40 raster 8.07/16.26 snap 0.94/1.92 texdec 0.37/0.10 gldraw 2.07/2.65 glup 0.00/0.00 render 25.03/49.29 boot3d 2.12/2.70 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 9600 (edge frame 9489): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 11400 (300 frames, 53.59 ms/frame wall): step 12.97/25.79 g3d 6.02/6.74 main2d 9.42/9.78 sub2d 0.00/0.00 present 1.05/5.63 audio 3.55/4.97 wait 0.00/0.01 geom 18.05/25.44 raster 8.06/16.26 snap 0.94/1.97 texdec 0.37/0.16 gldraw 2.07/2.34 glup 0.00/0.00 render 25.11/49.95 boot3d 2.12/2.55 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 9600, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 11700 (300 frames, 53.60 ms/frame wall): step 12.98/25.73 g3d 6.01/6.87 main2d 9.42/9.77 sub2d 0.00/0.00 present 1.05/5.56 audio 3.60/5.05 wait 0.00/0.01 geom 18.05/25.40 raster 8.06/16.27 snap 0.94/2.00 texdec 0.37/0.16 gldraw 2.07/2.45 glup 0.00/0.00 render 25.06/49.40 boot3d 2.12/2.50 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 10200 (edge frame 10089): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 12000 (300 frames, 53.59 ms/frame wall): step 12.98/25.71 g3d 6.02/7.00 main2d 9.42/9.79 sub2d 0.00/0.00 present 1.05/7.06 audio 3.58/5.07 wait 0.00/0.02 geom 18.06/25.37 raster 8.06/16.18 snap 0.94/1.98 texdec 0.37/0.11 gldraw 2.07/2.33 glup 0.00/0.00 render 25.06/49.36 boot3d 2.12/2.70 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 10200, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+prof frame 12300 (300 frames, 53.61 ms/frame wall): step 12.98/25.74 g3d 6.03/6.75 main2d 9.41/9.82 sub2d 0.00/0.00 present 1.06/6.75 audio 3.57/5.07 wait 0.00/0.01 geom 18.06/25.40 raster 8.07/16.29 snap 0.94/1.95 texdec 0.37/0.15 gldraw 2.08/2.47 glup 0.00/0.01 render 25.08/49.75 boot3d 2.13/2.51 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: render_into entry: program 12, vao 3, framebuffer 0, active texture 0x84C0
+eidos: edge diag: before edge_pass: GL error 0x0502
+eidos: edge diag: frame 10800 (edge frame 10689): render_into returns -1, GL error 0x0502
+eidos: 4 fps
+eidos: 4 fps
+prof frame 12600 (300 frames, 53.64 ms/frame wall): step 12.97/25.73 g3d 6.04/6.80 main2d 9.42/9.76 sub2d 0.00/0.00 present 1.05/5.83 audio 3.63/5.04 wait 0.00/0.01 geom 18.05/25.39 raster 8.06/16.20 snap 0.94/1.94 texdec 0.37/0.15 gldraw 2.07/2.41 glup 0.00/0.01 render 25.06/49.28 boot3d 2.12/2.59 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: edge diag: edge frame 10800, variant 1, step 5, 1280x720
+eidos: edge diag: post_fbo after bind: framebuffer status 0x8CD5
+eidos: edge diag: fb->fbo after fbo_attach: framebuffer status 0x8CD5
+eidos: edge diag: fbo_attach returned 0
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+eidos: 4 fps
+exiting ... 

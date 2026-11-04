@@ -1,0 +1,15 @@
+# Run 44 — orphan+budget on the shipping line (fix-round5 + fix-r6)
+
+Merges round-4 S1-S3 + round-5 S1(map only)/S2(gtex cap, async read,
+native audio)/S3 + r6 upload budget + orphan-on-respec + first-upload
+guarantee + 1x1 black placeholders. Desktop green (2 known fails).
+test_gpu3d passes.
+
+- module 14484756 bytes, sha256 57e52da836af0ba2e4d113c5bdf6e1bc9ec93e37841c56542061a6d2564b1d20
+- NRO /tmp/build-fix7/eidos.nro, 52009764 bytes,
+  sha256 050a2ed34d316704a27736db0487ab81ec6fba55db2e6fc0a0c94c6c5fadfc65
+- strings: Mesa 16732f6142, drm_nouveau 0.
+
+Decides: do multi-second upload hitches survive orphan+budget at max
+clocks? Yes = orphan theory dead, look elsewhere. No = stalls were
+re-spec waits, monitor steady wall next.

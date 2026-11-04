@@ -1,0 +1,4 @@
+run 27: eidos-g2dfence (native, sha256 2255e802...), NOWAIT, EDGE=0, --profile 300, bench spot. Stopped early by maintainer.
+Last window: 61.93 ms/frame, g2dread 22.50, main2d 8.88, game 10.26 (geom 8.39), ui 6.00.
+fps line: 15-16 game frames/s, 0 presents skipped, 31-32 GPU 2D screens/s, 0 read back late.
+=> fence fix has no effect; g2dread is CPU copy cost, not a GPU wait.

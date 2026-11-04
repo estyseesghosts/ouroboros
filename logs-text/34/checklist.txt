@@ -1,0 +1,18 @@
+# Run 34 — probe minus the EGL table (instr-run 3309301)
+
+The run-33 table init/terminated the shared EGL display and blacked
+the screen (app alive, fps flowing, display dead). Table removed;
+lesson recorded in host/sdl.c. Kept: sampled prefin sync (every
+120th frame), present split, census, 1/sec scene log.
+
+- module 14483686 bytes, sha256 f0e9c45e0f69e086cefcd8eac147d55d544879a1d8f16305815fcb44e83b43eb (unchanged — table was host-side)
+- NRO /tmp/build-instr4/eidos.nro, 52009764 bytes,
+  sha256 1a9abab87e40e9cd2cf033c38c8bd9a1218f6c6579748044e3e690a00bed3382
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+
+What run 33 proved before the blackout (all configs
+EGL_NON_CONFORMANT 0x3051): no conformant config exists — EGL tuning
+cannot fix the swap. The drain-vs-path read must come from prefin.
+
+Parked run (no inputs), 5+ min. Watch prefin vs preswap, census,
+scene flap. No fps claim.

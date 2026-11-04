@@ -1,0 +1,20 @@
+# Run 40 — texture upload budget (fix-r6, r6fix tip 5cc43b0)
+
+Why: run 37-39 hitch autopsy pinned a 1.4s stall inside the 3D texture
+upload loop on new scenes (whole storm uploaded in one frame, driver
+backs up). Fix: 2MB/frame upload budget; deferred textures keep a
+stale key and the serial stays behind so the next frame retries
+exactly what's missing; new GL slots get a 1x1 black TexImage at
+creation so deferred content is defined, never garbage.
+
+- module 14484686 bytes, sha256 9aa128138b0264bea103bbdeaf1be7813a0261118480e94152448a78d0046501
+- NRO /tmp/build-fix6b/eidos.nro, 52009764 bytes,
+  sha256 626d8c4964985469d0718bec0c23062f284935e2804fb393ba9135d5b3fe59c7
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+  test_gpu3d passes (budget doesn't touch steady-state uploads).
+
+Watch: new-scene loads should stutter in small steps instead of one
+multi-second freeze (brief black pop-in on brand-new textures is the
+accepted trade, logged here); stuck tail should not re-form;
+present drain should fall with the smaller per-frame uploads.
+No fps claim; same-scene pair still pending.

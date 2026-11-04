@@ -1,0 +1,26 @@
+# Run 42 — orphan-on-respec + first-upload-through (fix-r6 tip 5cc43b0+)
+
+Why: run 40-41 hitches showed multi-second stalls inside the 3D
+texture upload loop on new scenes. Mechanism: re-spec with data
+makes a backed-up driver wait for the store it replaces. Fix:
+orphan first (NULL TexImage hands the driver a fresh store, no
+wait), then fill with SubData. Budget stays as backstop (2MB/frame,
+serial held until done). New slots get a 1x1 black TexImage at
+creation (defined content, brief pop-in beats garbage). Same-size
+SubData path untouched (works today).
+
+Also fixes a real bug in the first budget version: oversize single
+textures (>2MB) could never upload (need > budget forever). First
+upload of each frame now always goes through.
+
+- module 14484756 bytes, sha256 cdfe89d39f570dff777b2933ce5caaaa3bcd876b03a7a8a94bb9949915ca194e
+- NRO /tmp/build-fix6c/eidos.nro, 52009764 bytes,
+  sha256 d24640d427085d1280cba2d46bb2a5c5667aba299d6b278e12042953e875c85f
+- strings: Mesa 16732f6142, drm_nouveau 0. Desktop green (2 known fails).
+  test_gpu3d passes.
+
+Context: user's GPU was at minimum clocks (explains drain magnitudes);
+this run is at MAX clocks. If stalls persist at max clocks with
+orphaning, the bottleneck is CPU-side submission, not the driver.
+Watch: new-scene hitches (size + count), steady present drain,
+fps floor in-game.

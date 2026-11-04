@@ -1,0 +1,5 @@
+Run 8 (A5b batch #1), EIDOS_EDGE=6. Launch + navigation by maintainer.
+scene_t0 shot at 11:02:13 caught the "Spring" season card (kept as scene_t0_season.jpg); field followed a few s later, so field window ~115 s at scene_t120 (11:04:14). Extra scene_t135 shot afterwards.
+Agent read: field BLACK below HUD at t120 (pixel max 0). Awaiting maintainer verdict.
+Ended by maintainer closing the game.
+Collected. Field fps mode:  150 12 

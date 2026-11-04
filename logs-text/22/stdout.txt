@@ -1,0 +1,223 @@
+Sending eidos.nro, 52869924 bytes
+17176522 sent (32.49%), 1453 blocks
+starting server
+server active ...
+eidos_boot: constructors
+eidos_boot: main
+eidos_boot: identity
+eidos_boot: settings
+eidos_boot: arguments
+eidos_boot: firstrun
+eidos_boot: firstrun done
+eidos_boot: DS address space identity-mapped; 159 code pointers the metadata does not list relocated by the scan
+eidos: SDL_Init(0x20)
+eidos: SDL_Init -> 1 ()
+eidos: SDL_CreateWindow(1280 x 720, 0x2022)
+SDL_EGL_ChooseConfig: found a slow EGL config
+eidos: SDL_CreateWindow -> ok ()
+eidos: SDL_GL_CreateContext
+eidos: SDL_GL_CreateContext -> ok (That operation is not supported)
+eidos: OpenGL NV12B (OpenGL ES 3.2 Mesa 26.2.4 (git-16732f6142))
+eidos: GPU 3D features 0x3, integer samples 8
+eidos: presenter OpenGL 3.3 (video driver Switch)
+eidos: SDL_InitSubSystem(0x2000)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: SDL_InitSubSystem(0x10)
+eidos: SDL_InitSubSystem -> 1 ()
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: nvram: cannot write the firmware flash (sdmc:/switch/eidos/profile/saves/firmware.bin); it stays in memory
+eidos: 32 fps
+eidos: 48 fps
+eidos: 36 fps
+eidos: 34 fps
+eidos: 50 fps
+eidos: 47 fps
+eidos: 36 fps
+prof frame 300 (300 frames, 24.51 ms/frame wall): step 0.35/3.77 g3d 8.84/20.44 main2d 5.96/6.25 sub2d 0.00/0.00 present 3.65/15.50 audio 0.74/2.16 wait 0.00/0.00 geom 0.00/0.00 raster 0.00/0.00 snap 0.00/0.00 texdec 0.00/0.00 gldraw 0.00/0.00 glup 0.00/0.00 render 17.55/50.71 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 3D features the GPU cannot draw: 0x0
+eidos: 20 fps
+eidos: 10 fps
+eidos: 10 fps
+eidos: 11 fps
+eidos: 11 fps
+eidos: 11 fps
+eidos: 10 fps
+eidos: 8 fps
+eidos: 11 fps
+eidos: 13 fps
+eidos: 15 fps
+eidos: 18 fps
+eidos: 21 fps
+eidos: 17 fps
+eidos: 7 fps
+ds call: 0x0216E471 -> overlay code
+eidos: 7 fps
+ds call: 0x021F36C1 -> overlay code
+bw_ds_ptr: VRAM 0x06898000 has no bank mapped; accesses there go nowhere, as on the DS
+ds call: 0x0216E469 -> overlay code
+ds call: 0x021F37D5 -> overlay code
+eidos: 14 fps
+eidos: 22 fps
+eidos: 26 fps
+prof frame 600 (300 frames, 69.27 ms/frame wall): step 3.21/46.04 g3d 24.78/112.70 main2d 12.52/23.27 sub2d 0.00/0.00 present 3.54/6.57 audio 2.82/5.31 wait 0.00/0.00 geom 9.68/45.69 raster 0.06/19.35 snap 1.33/22.15 texdec 0.58/2.62 gldraw 0.80/3.86 glup 0.02/4.18 render 39.89/125.30 boot3d 0.00/0.01 glread 0.00/0.00 unprem 0.29/1.22 (avg/max ms)
+eidos: 26 fps
+eidos: 26 fps
+eidos: 26 fps
+eidos: 18 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+prof frame 900 (300 frames, 56.93 ms/frame wall): step 3.38/6.52 g3d 5.77/21.55 main2d 9.41/9.65 sub2d 0.00/0.00 present 3.95/6.40 audio 3.65/4.91 wait 0.00/0.00 geom 8.42/6.18 raster 0.00/0.00 snap 0.93/1.97 texdec 0.37/0.13 gldraw 0.93/14.31 glup 0.02/4.43 render 34.89/65.21 boot3d 1.58/26.64 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+eidos: 16 fps
+prof frame 1200 (300 frames, 62.07 ms/frame wall): step 3.38/6.53 g3d 5.98/6.56 main2d 9.43/9.60 sub2d 0.00/0.00 present 4.01/5.31 audio 4.07/5.05 wait 0.00/0.00 geom 8.42/6.19 raster 0.00/0.00 snap 0.93/1.97 texdec 0.37/0.13 gldraw 1.14/1.32 glup 0.00/0.00 render 39.88/40.86 boot3d 1.93/2.17 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+eidos: 16 fps
+prof frame 1500 (300 frames, 62.05 ms/frame wall): step 3.38/6.50 g3d 5.96/6.56 main2d 9.43/9.61 sub2d 0.00/0.00 present 4.01/4.80 audio 4.06/5.01 wait 0.00/0.00 geom 8.42/6.16 raster 0.00/0.00 snap 0.93/1.93 texdec 0.37/0.13 gldraw 1.14/1.30 glup 0.00/0.00 render 39.87/41.14 boot3d 1.92/2.12 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+prof frame 1800 (300 frames, 62.04 ms/frame wall): step 3.38/6.52 g3d 5.97/6.57 main2d 9.42/9.60 sub2d 0.00/0.00 present 4.01/5.26 audio 4.05/5.05 wait 0.00/0.00 geom 8.42/6.18 raster 0.00/0.00 snap 0.93/1.94 texdec 0.37/0.11 gldraw 1.14/1.35 glup 0.00/0.00 render 39.88/41.06 boot3d 1.93/2.18 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+prof frame 2100 (300 frames, 62.06 ms/frame wall): step 3.38/6.53 g3d 5.99/6.57 main2d 9.42/9.60 sub2d 0.00/0.00 present 4.01/5.35 audio 4.05/5.01 wait 0.00/0.00 geom 8.42/6.19 raster 0.00/0.00 snap 0.93/1.97 texdec 0.37/0.13 gldraw 1.14/1.32 glup 0.00/0.00 render 39.88/40.89 boot3d 1.93/2.13 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+prof frame 2400 (300 frames, 62.07 ms/frame wall): step 3.38/6.50 g3d 5.98/6.59 main2d 9.42/9.61 sub2d 0.00/0.00 present 4.01/4.84 audio 4.08/5.03 wait 0.00/0.00 geom 8.42/6.16 raster 0.00/0.00 snap 0.93/1.96 texdec 0.37/0.12 gldraw 1.14/1.30 glup 0.00/0.01 render 39.88/41.10 boot3d 1.93/2.11 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 16 fps
+prof frame 2700 (300 frames, 62.08 ms/frame wall): step 3.38/6.54 g3d 5.97/6.56 main2d 9.42/9.59 sub2d 0.00/0.00 present 4.03/5.73 audio 4.07/5.03 wait 0.00/0.00 geom 8.42/6.20 raster 0.00/0.00 snap 0.93/1.94 texdec 0.37/0.10 gldraw 1.14/1.35 glup 0.00/0.00 render 39.87/40.97 boot3d 1.93/2.22 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 15 fps
+prof frame 3000 (300 frames, 62.04 ms/frame wall): step 3.38/6.52 g3d 5.97/6.61 main2d 9.43/9.61 sub2d 0.00/0.00 present 4.01/4.73 audio 4.03/5.02 wait 0.00/0.00 geom 8.42/6.17 raster 0.00/0.00 snap 0.93/1.93 texdec 0.37/0.11 gldraw 1.14/1.29 glup 0.00/0.01 render 39.88/41.02 boot3d 1.93/2.10 glread 0.00/0.00 unprem 0.00/0.00 (avg/max ms)
+eidos: 16 fps
+eidos: 15 fps
+eidos: 15 fps
+eidos: 16 fps
+eidos: 16 fps
+eidos: 15 fps
+eidos: 16 fps
+exiting ... 

@@ -1,0 +1,7 @@
+Run 3 (A5b batch #1), EIDOS_EDGE=1. Launched via Sphaira 7/27, nav by agent, 800 ms holds.
+title mode confirmed in boot.txt at +20 s. Intro -> Plus -> title -> Plus -> Continue (B) -> "Spring" -> field.
+No C-Gear / restricted-functions dialogs this time (differs from run 13 script).
+Field appeared ~10:40:30 local. scene_t0 10:40:35, scene_t120 10:42:36.
+Agent read of screenshots: field BLACK under the Mistralton City HUD at t0 and t120 (same as run 13). Awaiting maintainer verdict.
+Ended by maintainer closing the game (no pm_kill: it crashes the MCP server).
+Collected: VALID (title mode, 0x0, NV12B git-16732f6142). Field fps steady 4 for the full window, no step-down. nvram firmware.bin write errors (expected, S1).

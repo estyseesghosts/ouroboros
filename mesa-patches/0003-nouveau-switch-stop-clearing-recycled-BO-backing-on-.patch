@@ -1,0 +1,137 @@
+From bf497bd027efb38eb34babef111ff75c4d13148b Mon Sep 17 00:00:00 2001
+From: terezi <jules@foxtails.me>
+Date: Mon, 2 Nov 2026 17:43:05 -0500
+Subject: [PATCH 3/5] nouveau/switch: stop clearing recycled BO backing on
+ every allocation
+
+Every nouveau_horizon_memory_create memset the whole allocation and
+cleaned the dcache, including bo-cache hits.  logs/06 shows ~97% of
+creates are cache hits (4096 creates, 4011 hits / 84 misses), so nearly
+every per-frame buffer creation paid a full clear; for coherent BOs the
+clear ran through the uncached (MemoryAttribute 8) mapping, store by
+store to DRAM.
+
+- Fresh memalign backing is still always zeroed, but now before the
+  NvMap is created while the pages are cacheable, followed by a dcache
+  clean+invalidate so no dirty line can be written back after the
+  attribute flips to uncached.
+- Recycled backing is cleared only when ZERO is requested.  The cache
+  only admits unregistered, non-imported identities, so a recycled BO
+  can only contain this process's own data.
+- The winsys requests ZERO only for GART-domain BOs.  Upstream nouveau
+  clears TTM system pages but historically not VRAM, so nvc0 never
+  relies on zeroed VRAM-domain storage.  Pool chunks drop ZERO: their
+  suballocations are already recycled without clearing.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ .../nouveau/switch/nouveau_switch_libdrm.c    | 14 ++++++++---
+ src/nouveau/horizon/nouveau_horizon_memory.c  | 25 ++++++++++++++++---
+ 2 files changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c b/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
+index 2b97c38116d..550b1bb4552 100644
+--- a/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
++++ b/src/gallium/winsys/nouveau/switch/nouveau_switch_libdrm.c
+@@ -778,8 +778,10 @@ bo_pool_create(struct nouveau_switch_device *device,
+       .size_B = NOUVEAU_SWITCH_BO_POOL_CHUNK_SIZE,
+       .align_B = bind_align_B,
+       .backing_kind = NvKind_Pitch,
++       /* No ZERO: suballocations are recycled within the chunk without
++        * clearing anyway, and fresh chunks are always zeroed by Horizon.
++        */
+        .flags = NOUVEAU_HORIZON_MEMORY_CPU_VISIBLE |
+-                NOUVEAU_HORIZON_MEMORY_ZERO |
+                 (cpu_uncached ? 0 : NOUVEAU_HORIZON_MEMORY_CPU_CACHED) |
+                 (gpu_cached ? NOUVEAU_HORIZON_MEMORY_GPU_CACHED : 0),
+       /* The pool is private and never exported.  Its VA fixes one PTE kind,
+@@ -1029,14 +1031,20 @@ nouveau_bo_new(struct nouveau_device *device, uint32_t flags,
+          .size_B = size,
+          .align_B = MAX2(align, 0x1000u),
+          .backing_kind = NvKind_Pitch,
+-         .flags = NOUVEAU_HORIZON_MEMORY_CPU_VISIBLE |
+-                  NOUVEAU_HORIZON_MEMORY_ZERO,
++         .flags = NOUVEAU_HORIZON_MEMORY_CPU_VISIBLE,
+          .layout = {
+             .valid = true,
+             .pte_kind = pte_kind,
+             .tile_mode = config ? config->nvc0.tile_mode : 0,
+          },
+       };
++      /* Recycled backing is cleared only on request.  Upstream nouveau
++       * clears GART (TTM system pages) but historically not VRAM, so nvc0
++       * never relies on zeroed VRAM-domain storage; keep the clear only for
++       * GART BOs (fences, notifiers, small staging), which are few.
++       */
++      if (flags & NOUVEAU_BO_GART)
++         memory_info.flags |= NOUVEAU_HORIZON_MEMORY_ZERO;
+       if (!cpu_uncached)
+          memory_info.flags |= NOUVEAU_HORIZON_MEMORY_CPU_CACHED;
+       if (gpu_cached)
+diff --git a/src/nouveau/horizon/nouveau_horizon_memory.c b/src/nouveau/horizon/nouveau_horizon_memory.c
+index f714bcbbc75..22b29b367c4 100644
+--- a/src/nouveau/horizon/nouveau_horizon_memory.c
++++ b/src/nouveau/horizon/nouveau_horizon_memory.c
+@@ -564,6 +564,7 @@ nouveau_horizon_memory_create(
+       NULL :
+       nouveau_horizon_bo_cache_take(device, size_B, align_B,
+                                     create_info->backing_kind, cpu_cacheable);
++   bool recycled_backing = false;
+    if (is_host_import) {
+       identity->cpu_addr = create_info->import_host_ptr;
+       /* Trim the cache once and retry, as the allocation path below does. */
+@@ -589,6 +590,7 @@ nouveau_horizon_memory_create(
+             rc, NOUVEAU_HORIZON_ERROR_OUT_OF_DEVICE_MEMORY);
+       }
+    } else if (recycled != NULL) {
++      recycled_backing = true;
+       identity->cpu_addr = recycled->cpu_addr;
+       identity->map = recycled->map;
+       FREE(recycled);
+@@ -608,6 +610,16 @@ nouveau_horizon_memory_create(
+             return NOUVEAU_HORIZON_ERROR_OUT_OF_HOST_MEMORY;
+          }
+ 
++         /* Fresh heap pages may hold stale data from earlier frees, so they
++          * are always zeroed (matching a kernel's fresh-page guarantee).  Do
++          * it here, while the pages are still CPU-cacheable: once an uncached
++          * NvMap sets MemoryAttribute 8, every store would go to DRAM one at
++          * a time.  Clean+invalidate so the zeros reach memory and no dirty
++          * line can be written back over GPU data after the attribute flips.
++          */
++         memset(identity->cpu_addr, 0, (size_t)size_B);
++         armDCacheFlush(identity->cpu_addr, (size_t)size_B);
++
+          Result rc = nouveau_horizon_memory_nvmap_create(&identity->map, identity->cpu_addr,
+                                  (uint32_t)size_B, (uint32_t)align_B,
+                                  (NvKind)create_info->backing_kind,
+@@ -647,9 +659,13 @@ nouveau_horizon_memory_create(
+       }
+    }
+ 
+-   /* Zero new and recycled backing, even without ZERO, before possible
+-    * export. Clean cached mappings so the GPU sees the zeros; uncached
+-    * stores need no clean.
++   /* Fresh backing was zeroed above.  Recycled backing is zeroed only on
++    * request: the cache admits only unregistered, non-imported identities
++    * (see nouveau_horizon_memory_identity_put), so a recycled BO can only
++    * hold this process's own earlier data and skipping the clear exposes
++    * nothing across a trust boundary.  Unconditionally clearing (and
++    * dcache-cleaning) every cache hit cost a full memset per allocation,
++    * through an uncached mapping for coherent BOs.
+     */
+    if (is_host_import) {
+       /* Imported memory keeps its contents; clean so the GPU's first read
+@@ -657,7 +673,8 @@ nouveau_horizon_memory_create(
+        */
+       if (cpu_cacheable)
+          armDCacheClean(identity->cpu_addr, (size_t)size_B);
+-   } else {
++   } else if (recycled_backing &&
++              (create_info->flags & NOUVEAU_HORIZON_MEMORY_ZERO)) {
+       memset(identity->cpu_addr, 0, (size_t)size_B);
+       if (cpu_cacheable)
+          armDCacheClean(identity->cpu_addr, (size_t)size_B);
+-- 
+2.54.0 (Apple Git-157)
+

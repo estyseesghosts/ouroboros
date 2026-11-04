@@ -1,0 +1,18 @@
+# Run 30 notes — fix-round3, fixed -O2 module (4b069ebe), NRO 885f30ab.
+
+Three 300-frame windows, wall FLAT: 44.93 -> 50.73 -> 44.59.
+No 46 -> 217 growth: the run-28/29 slope was the -O0 module build,
+not the game code. present 36.24 -> 15.54 -> 21.51; main2d 1.29 / 10.29
+/ 2.04; g2dread 0.00 all windows; ui 5.8 / 10.1 / 11.9.
+
+Windows differ by scene (w2 has real 3D: g3d 5.28/597 max, read3d
+5.28, a 1131ms ui hitch and a 1171ms present max; w1/w3 no 3D).
+User navigated, not parked at the bench — no before/after claim
+possible. One 0-fps second at the very end, then clean exit
+("exiting ...", NXEXIT=0).
+
+Slow EGL config line still prints. Audio still converts (44100 dev).
+SoC started 28C. Console back at Sphaira after exit.
+
+Next: park at the Mistralton bench, take the want=3 vs gated pair
+per checklist, same scene only.

@@ -1,0 +1,23 @@
+Read 383 bytes from offset 0:
+main
+title mode
+stderr redirected
+arguments
+host_run: SDL_Init
+host_run: mutex
+host_run: wasm_rt_init
+host_run: wasi_init
+host_run: fibers_init
+host_run: instantiate
+host_run: start
+sdl: Init
+sdl: Init done
+sdl: CreateWindow
+sdl: CreateWindow done
+sdl: GL_CreateContext
+sdl: GL_CreateContext done
+sdl: InitSubSystem
+sdl: InitSubSystem done
+sdl: InitSubSystem
+sdl: InitSubSystem done
+
